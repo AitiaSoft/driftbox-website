@@ -1,3 +1,49 @@
+// ===== Theme Switcher =====
+(function() {
+    const root = document.documentElement;
+    const switcher = document.getElementById('theme-switcher');
+    
+    function getSystemTheme() {
+        return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    
+    function applyTheme(theme) {
+        const resolved = theme === 'system' ? getSystemTheme() : theme;
+        root.setAttribute('data-theme', resolved);
+        
+        // Update active button
+        switcher.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.theme === theme);
+        });
+        
+        // Update navbar scroll color
+        const isDark = resolved === 'dark';
+        document.querySelector('.navbar').style.background = isDark 
+            ? 'rgba(10, 10, 15, 0.8)' 
+            : 'rgba(255, 255, 255, 0.85)';
+    }
+    
+    // Load saved preference
+    const saved = localStorage.getItem('driftbox-theme') || 'dark';
+    applyTheme(saved);
+    
+    // Button clicks
+    switcher.addEventListener('click', (e) => {
+        const btn = e.target.closest('.theme-btn');
+        if (!btn) return;
+        const theme = btn.dataset.theme;
+        localStorage.setItem('driftbox-theme', theme);
+        applyTheme(theme);
+    });
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+        if (localStorage.getItem('driftbox-theme') === 'system') {
+            applyTheme('system');
+        }
+    });
+})();
+
 // ===== Smooth scroll for nav links =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -41,11 +87,12 @@ let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
+    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
     
     if (currentScroll > 50) {
-        navbar.style.background = 'rgba(10, 10, 15, 0.95)';
+        navbar.style.background = isDark ? 'rgba(10, 10, 15, 0.95)' : 'rgba(255, 255, 255, 0.95)';
     } else {
-        navbar.style.background = 'rgba(10, 10, 15, 0.8)';
+        navbar.style.background = isDark ? 'rgba(10, 10, 15, 0.8)' : 'rgba(255, 255, 255, 0.85)';
     }
     
     lastScroll = currentScroll;
