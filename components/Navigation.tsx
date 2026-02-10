@@ -8,7 +8,7 @@ export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -24,7 +24,7 @@ export default function Navigation() {
                 </linearGradient>
               </defs>
             </svg>
-            <span className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">DriftBox</span>
+            <span className="text-xl font-extrabold tracking-tight font-display text-slate-900 dark:text-white">DriftBox</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -42,9 +42,9 @@ export default function Navigation() {
               Pricing
             </Link>
             <ThemeToggle />
-            <Link 
-              href="/#waitlist" 
-              className="px-5 py-2 text-sm font-semibold rounded-lg bg-indigo-600/10 text-indigo-400 border border-indigo-600/30 hover:bg-indigo-600/20 transition-colors"
+            <Link
+              href="/#waitlist"
+              className="px-5 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md shadow-indigo-500/20 hover:shadow-indigo-500/30 hover:-translate-y-0.5 transition-all"
             >
               Join Waitlist
             </Link>
@@ -72,7 +72,7 @@ export default function Navigation() {
             <div className="pt-2">
               <ThemeToggle />
             </div>
-            <Link href="/#waitlist" className="block px-5 py-2 text-sm font-semibold rounded-lg bg-indigo-600/10 text-indigo-400 border border-indigo-600/30 text-center">
+            <Link href="/#waitlist" className="block px-5 py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-center shadow-md shadow-indigo-500/20">
               Join Waitlist
             </Link>
           </div>

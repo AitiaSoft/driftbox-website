@@ -1,3 +1,5 @@
+import ScrollReveal from './ScrollReveal'
+
 export default function Pricing() {
   const plans = [
     {
@@ -51,64 +53,74 @@ export default function Pricing() {
   ]
 
   return (
-    <section id="pricing" className="py-24 bg-slate-100 dark:bg-gray-900/50">
+    <section id="pricing" className="py-28 bg-slate-50 dark:bg-slate-950/50 relative overflow-hidden">
+      {/* Background orb behind the highlighted card */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/4 dark:bg-indigo-500/6 rounded-full blur-[120px] -z-10" />
+
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">
-            Simple, <span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">Transparent</span> Pricing
-          </h2>
-          <p className="text-xl text-slate-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Choose the plan that fits your needs. Free during beta.
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">
+              Simple, <span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">Transparent</span> Pricing
+            </h2>
+            <p className="text-xl text-slate-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Choose the plan that fits your needs. Free during beta.
+            </p>
+          </div>
+        </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto items-start">
           {plans.map((plan, index) => (
-            <div
-              key={index}
-              className={`relative rounded-2xl p-8 ${
-                plan.highlighted
-                  ? 'bg-gradient-to-br from-indigo-500/10 dark:from-indigo-500/20 to-purple-500/10 dark:to-purple-500/20 border-2 border-indigo-500/50'
-                  : 'bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/50 shadow-sm dark:shadow-none'
-              } hover:scale-105 transition-all duration-300`}
-            >
-              {plan.highlighted && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                  Most Popular
-                </div>
-              )}
-              
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold mb-2 text-slate-900 dark:text-white">{plan.name}</h3>
-                <p className="text-slate-500 dark:text-gray-400 text-sm mb-4">{plan.description}</p>
-                <div className="flex items-baseline">
-                  <span className="text-5xl font-bold text-slate-900 dark:text-white">{plan.price}</span>
-                  <span className="text-slate-500 dark:text-gray-400 ml-2">{plan.period}</span>
-                </div>
-              </div>
-
-              <ul className="space-y-4 mb-8">
-                {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-start">
-                    <svg className="w-5 h-5 text-indigo-500 dark:text-indigo-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-slate-700 dark:text-gray-300">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href="#waitlist"
-                className={`block w-full py-3 px-6 rounded-lg text-center font-semibold transition-all duration-300 ${
+            <ScrollReveal key={index} delay={index * 120}>
+              <div
+                className={`relative rounded-2xl p-8 transition-all duration-300 ${
                   plan.highlighted
-                    ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:shadow-lg hover:shadow-indigo-500/50'
-                    : 'bg-slate-100 dark:bg-gray-700/50 text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-gray-700'
+                    ? 'bg-white dark:bg-slate-900 border-2 border-indigo-500/40 shadow-xl shadow-indigo-500/10 dark:shadow-indigo-500/5 scale-[1.03] md:scale-105'
+                    : 'bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
                 }`}
               >
-                {plan.cta}
-              </a>
-            </div>
+                {plan.highlighted && (
+                  <>
+                    {/* Glow behind highlighted card */}
+                    <div className="absolute -inset-px rounded-2xl bg-gradient-to-b from-indigo-500/20 to-purple-500/20 -z-10 blur-xl" />
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-5 py-1.5 rounded-full text-sm font-semibold shadow-lg shadow-indigo-500/25">
+                      Most Popular
+                    </div>
+                  </>
+                )}
+
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold mb-2 text-slate-900 dark:text-white">{plan.name}</h3>
+                  <p className="text-slate-500 dark:text-gray-400 text-sm mb-5">{plan.description}</p>
+                  <div className="flex items-baseline">
+                    <span className="text-5xl font-bold text-slate-900 dark:text-white">{plan.price}</span>
+                    <span className="text-slate-500 dark:text-gray-400 ml-2">{plan.period}</span>
+                  </div>
+                </div>
+
+                <ul className="space-y-4 mb-8">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="flex items-start">
+                      <svg className={`w-5 h-5 mr-3 mt-0.5 flex-shrink-0 ${plan.highlighted ? 'text-indigo-500' : 'text-indigo-500/70 dark:text-indigo-400/70'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="text-slate-700 dark:text-gray-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href="#waitlist"
+                  className={`block w-full py-3.5 px-6 rounded-xl text-center font-semibold transition-all duration-300 ${
+                    plan.highlighted
+                      ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5'
+                      : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700'
+                  }`}
+                >
+                  {plan.cta}
+                </a>
+              </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

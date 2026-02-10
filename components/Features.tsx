@@ -1,3 +1,5 @@
+import ScrollReveal from './ScrollReveal'
+
 const features = [
   {
     icon: (
@@ -7,6 +9,11 @@ const features = [
     ),
     title: 'Unified Inbox',
     description: 'Email, Slack, Teams, WhatsApp — all in one view. No more app-switching. No more lost threads.',
+    accent: {
+      iconBg: 'bg-sky-500/10 dark:bg-sky-500/15',
+      iconText: 'text-sky-600 dark:text-sky-400',
+      hoverBorder: 'hover:border-sky-500/30',
+    },
   },
   {
     icon: (
@@ -17,6 +24,11 @@ const features = [
     ),
     title: 'AI Summaries',
     description: 'Get the gist of any conversation in seconds. Daily digests, meeting recaps, and thread summaries — automatically.',
+    accent: {
+      iconBg: 'bg-violet-500/10 dark:bg-violet-500/15',
+      iconText: 'text-violet-600 dark:text-violet-400',
+      hoverBorder: 'hover:border-violet-500/30',
+    },
   },
   {
     icon: (
@@ -27,6 +39,11 @@ const features = [
     ),
     title: 'Action Detection',
     description: 'DriftBox spots decisions, deadlines, and action items buried in your messages — and makes sure you follow through.',
+    accent: {
+      iconBg: 'bg-emerald-500/10 dark:bg-emerald-500/15',
+      iconText: 'text-emerald-600 dark:text-emerald-400',
+      hoverBorder: 'hover:border-emerald-500/30',
+    },
   },
   {
     icon: (
@@ -37,6 +54,11 @@ const features = [
     ),
     title: 'Smart Search',
     description: '"What did Sarah say about the budget last week?" — search across all platforms with natural language.',
+    accent: {
+      iconBg: 'bg-amber-500/10 dark:bg-amber-500/15',
+      iconText: 'text-amber-600 dark:text-amber-400',
+      hoverBorder: 'hover:border-amber-500/30',
+    },
   },
   {
     icon: (
@@ -47,6 +69,11 @@ const features = [
     ),
     title: 'Smart Alerts',
     description: 'Get notified only when it matters. DriftBox learns your priorities and filters the noise.',
+    accent: {
+      iconBg: 'bg-rose-500/10 dark:bg-rose-500/15',
+      iconText: 'text-rose-600 dark:text-rose-400',
+      hoverBorder: 'hover:border-rose-500/30',
+    },
   },
   {
     icon: (
@@ -57,6 +84,11 @@ const features = [
     ),
     title: 'Enterprise Security',
     description: 'End-to-end encryption. SOC 2 compliant. Your conversations stay yours — always.',
+    accent: {
+      iconBg: 'bg-cyan-500/10 dark:bg-cyan-500/15',
+      iconText: 'text-cyan-600 dark:text-cyan-400',
+      hoverBorder: 'hover:border-cyan-500/30',
+    },
   },
 ]
 
@@ -65,26 +97,29 @@ export default function Features() {
     <section id="features" className="py-28 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-slate-900 dark:text-white">
-            Everything you need to <span className="gradient-text">never miss a thing</span>
-          </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400">DriftBox doesn't just aggregate messages. It understands them.</p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-slate-900 dark:text-white">
+              Everything you need to <span className="gradient-text">never miss a thing</span>
+            </h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto">DriftBox doesn't just aggregate messages. It understands them.</p>
+          </div>
+        </ScrollReveal>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((feature, i) => (
-            <div
-              key={i}
-              className="p-9 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:border-indigo-600/20 hover:-translate-y-1 transition-all"
-            >
-              <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-indigo-600/10 text-indigo-400 mb-5">
-                {feature.icon}
+            <ScrollReveal key={i} delay={i * 80}>
+              <div
+                className={`group p-8 bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl ${feature.accent.hoverBorder} hover:-translate-y-1 transition-all duration-300 h-full`}
+              >
+                <div className={`w-12 h-12 flex items-center justify-center rounded-xl ${feature.accent.iconBg} ${feature.accent.iconText} mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                  {feature.icon}
+                </div>
+                <h3 className="text-lg font-bold mb-2.5 text-slate-900 dark:text-white">{feature.title}</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{feature.description}</p>
               </div>
-              <h3 className="text-lg font-bold mb-2.5 text-slate-900 dark:text-white">{feature.title}</h3>
-              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{feature.description}</p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
