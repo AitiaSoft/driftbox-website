@@ -7,7 +7,7 @@ excerpt: "I'm building DriftBox because I got tired of losing important conversa
 
 # Welcome to the DriftBox Blog
 
-Hey — I'm Roberto, the founder of DriftBox. I've been building software for over 25 years, and this blog is where I'm going to share the real journey of building something new.
+Hey — I'm Roberto, the founder of DriftBox. I've been building software for over three decades, and this blog is where I'm going to share the real journey of building something new.
 
 No corporate speak. No press releases. Just honest thoughts about what we're building and why.
 
@@ -16,13 +16,13 @@ No corporate speak. No press releases. Just honest thoughts about what we're bui
 I'm building DriftBox in public. That means sharing the wins, the mistakes, and everything in between. On this blog you'll find:
 
 - **The real story** — what it's actually like building a product from scratch
-- **Lessons learned** — from 25 years in software and the new things I'm figuring out every day
+- **Lessons learned** — from 35+ years in software and the new things I'm figuring out every day
 - **Communication insights** — tips and ideas about managing the chaos of modern communication
 - **Product updates** — what we're building, why, and what's coming next
 
 ## The Problem That Started It All
 
-Last week I missed a client follow-up. The decision was made in a Teams call, the details were in an email, and the deadline was in a WhatsApp message. I've been doing this for 25 years and I still can't keep track of it all.
+Last week I missed a client follow-up. The decision was made in a Teams call, the details were in an email, and the deadline was in a WhatsApp message. After more than three decades in this industry, I still can't keep track of it all.
 
 That's the problem DriftBox is solving — conversations happen everywhere, but the important stuff (decisions, commitments, follow-ups) gets lost in the noise.
 
