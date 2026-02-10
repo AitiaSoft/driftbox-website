@@ -45,6 +45,8 @@ export const metadata: Metadata = {
     title: 'DriftBox — Never Let a Conversation Drift Away',
     description: 'DriftBox captures every conversation across email, Slack, Teams, and WhatsApp — then surfaces what matters.',
     images: ['https://driftbox.ai/og-image.jpg'],
+    creator: '@rvaldezv',
+    site: '@rvaldezv',
   },
   icons: {
     icon: '/favicon.svg',

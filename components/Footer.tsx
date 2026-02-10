@@ -25,6 +25,9 @@ export default function Footer() {
               <span className="text-xl font-extrabold font-display text-slate-900 dark:text-white">DriftBox</span>
             </Link>
             <p className="text-slate-600 dark:text-slate-400 text-sm">Never let a conversation drift away.</p>
+            <a href="https://x.com/rvaldezv" target="_blank" rel="noopener noreferrer" className="inline-block mt-4 text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
           </div>
 
           {/* Links */}

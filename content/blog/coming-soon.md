@@ -1,44 +1,37 @@
 ---
 title: "Welcome to the DriftBox Blog"
 date: "2026-02-10"
-author: "DriftBox Team"
-excerpt: "We're building the future of communication intelligence. Stay tuned for insights on AI, productivity, and how to never lose track of a conversation again."
+author: "Roberto Valdez"
+excerpt: "I'm building DriftBox because I got tired of losing important conversations across 5 different apps. Here's what this blog is about."
 ---
 
 # Welcome to the DriftBox Blog
 
-We're excited to launch the DriftBox blog — your source for insights on communication, AI, and productivity in the modern workplace.
+Hey — I'm Roberto, the founder of DriftBox. I've been building software for over 25 years, and this blog is where I'm going to share the real journey of building something new.
 
-## What to Expect
+No corporate speak. No press releases. Just honest thoughts about what we're building and why.
 
-In the coming weeks and months, we'll be sharing:
+## Why This Blog?
 
-- **Product Updates** — The latest features and improvements to DriftBox
-- **Communication Best Practices** — Tips for managing conversations across multiple platforms
-- **AI Insights** — How artificial intelligence is transforming the way we work
-- **Customer Stories** — Real-world examples of teams using DriftBox to stay organized
+I'm building DriftBox in public. That means sharing the wins, the mistakes, and everything in between. On this blog you'll find:
 
-## Why DriftBox?
+- **The real story** — what it's actually like building a product from scratch
+- **Lessons learned** — from 25 years in software and the new things I'm figuring out every day
+- **Communication insights** — tips and ideas about managing the chaos of modern communication
+- **Product updates** — what we're building, why, and what's coming next
 
-In today's world, conversations happen everywhere — email, Slack, Teams, WhatsApp, and more. Important decisions get lost in message threads. Action items fall through the cracks. Context disappears when someone asks, "What did we decide about that?"
+## The Problem That Started It All
 
-**DriftBox solves this.**
+Last week I missed a client follow-up. The decision was made in a Teams call, the details were in an email, and the deadline was in a WhatsApp message. I've been doing this for 25 years and I still can't keep track of it all.
 
-We capture every conversation, understand the context, and surface what matters when you need it. Ask questions in plain English. Get instant answers with source links. Never lose track of a conversation again.
+That's the problem DriftBox is solving — conversations happen everywhere, but the important stuff (decisions, commitments, follow-ups) gets lost in the noise.
 
-## Join the Waitlist
+## Follow Along
 
-We're currently in private beta. Join the waitlist to get early access when we launch publicly.
+I'm sharing the journey on Twitter too — the day-to-day stuff that's too short for a blog post.
 
-[Get Early Access →](#waitlist)
+Follow me at [@rvaldezv](https://x.com/rvaldezv)
 
-## Stay Connected
+And if scattered conversations drive you crazy like they do for me, [join the waitlist](/#waitlist) — we're just getting started.
 
-Have questions or feedback? We'd love to hear from you:
-
-- Email: [hello@driftbox.ai](mailto:hello@driftbox.ai)
-- Twitter: [@driftboxai](https://twitter.com/driftboxai)
-
-Thanks for being part of our journey. We can't wait to show you what we're building.
-
-— The DriftBox Team
+— Roberto
