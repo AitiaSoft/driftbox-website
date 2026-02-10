@@ -14,7 +14,6 @@ interface BlogPost {
 function getBlogPosts(): BlogPost[] {
   const postsDirectory = path.join(process.cwd(), 'content/blog')
   
-  // Create directory if it doesn't exist
   if (!fs.existsSync(postsDirectory)) {
     return []
   }
@@ -46,21 +45,21 @@ export default function BlogPage() {
   const posts = getBlogPosts()
 
   return (
-    <div className="min-h-screen bg-gray-950 pt-24">
+    <div className="min-h-screen bg-[rgb(var(--bg-primary))] pt-24">
       <div className="container mx-auto px-6 py-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-[rgb(var(--text-primary))]">
               The DriftBox <span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">Blog</span>
             </h1>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl text-[rgb(var(--text-tertiary))]">
               Insights on communication, AI, and productivity
             </p>
           </div>
 
           {posts.length === 0 ? (
             <div className="text-center py-16">
-              <p className="text-gray-400 text-lg">No blog posts yet. Check back soon!</p>
+              <p className="text-[rgb(var(--text-tertiary))] text-lg">No blog posts yet. Check back soon!</p>
             </div>
           ) : (
             <div className="space-y-12">
@@ -70,21 +69,21 @@ export default function BlogPage() {
                   href={`/blog/${post.slug}`}
                   className="block group"
                 >
-                  <article className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 hover:border-indigo-500/50 transition-all duration-300">
-                    <time className="text-sm text-indigo-400 font-semibold">
+                  <article className="bg-[rgb(var(--bg-secondary))]/50 backdrop-blur-sm border border-[rgb(var(--border-color))] rounded-2xl p-8 hover:border-indigo-500/50 transition-all duration-300">
+                    <time className="text-sm text-indigo-500 dark:text-indigo-400 font-semibold">
                       {new Date(post.date).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric',
                       })}
                     </time>
-                    <h2 className="text-3xl font-bold mt-4 mb-4 group-hover:text-indigo-400 transition-colors">
+                    <h2 className="text-3xl font-bold mt-4 mb-4 text-[rgb(var(--text-primary))] group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors">
                       {post.title}
                     </h2>
-                    <p className="text-gray-400 text-lg mb-4">{post.excerpt}</p>
+                    <p className="text-[rgb(var(--text-tertiary))] text-lg mb-4">{post.excerpt}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-500 text-sm">{post.author}</span>
-                      <span className="text-indigo-400 font-semibold group-hover:translate-x-2 transition-transform">
+                      <span className="text-[rgb(var(--text-tertiary))] text-sm">{post.author}</span>
+                      <span className="text-indigo-500 dark:text-indigo-400 font-semibold group-hover:translate-x-2 transition-transform">
                         Read more →
                       </span>
                     </div>
@@ -95,9 +94,9 @@ export default function BlogPage() {
           )}
 
           {/* Newsletter CTA */}
-          <div className="mt-16 bg-gradient-to-br from-indigo-900/30 to-purple-900/30 border border-gray-700/50 rounded-2xl p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
-            <p className="text-gray-400 mb-6">
+          <div className="mt-16 bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 border border-[rgb(var(--border-color))] rounded-2xl p-8 text-center">
+            <h3 className="text-2xl font-bold mb-4 text-[rgb(var(--text-primary))]">Stay Updated</h3>
+            <p className="text-[rgb(var(--text-tertiary))] mb-6">
               Get notified when we publish new articles and product updates
             </p>
             <form 
@@ -122,7 +121,7 @@ export default function BlogPage() {
                   name="email"
                   placeholder="Enter your email"
                   required
-                  className="flex-1 px-6 py-3 bg-gray-800/50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white placeholder-gray-400"
+                  className="flex-1 px-6 py-3 bg-[rgb(var(--bg-tertiary))] border border-[rgb(var(--border-color))] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-[rgb(var(--text-primary))] placeholder-[rgb(var(--text-tertiary))]"
                 />
                 <button
                   type="submit"

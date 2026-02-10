@@ -81,10 +81,10 @@ export default async function BlogPost({ params }: BlogPostProps) {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-gray-950 pt-24 flex items-center justify-center">
+      <div className="min-h-screen bg-[rgb(var(--bg-primary))] pt-24 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-          <Link href="/blog" className="text-indigo-400 hover:text-indigo-300">
+          <h1 className="text-4xl font-bold mb-4 text-[rgb(var(--text-primary))]">Post Not Found</h1>
+          <Link href="/blog" className="text-indigo-500 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300">
             ← Back to Blog
           </Link>
         </div>
@@ -93,50 +93,50 @@ export default async function BlogPost({ params }: BlogPostProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-950 pt-24">
+    <div className="min-h-screen bg-[rgb(var(--bg-primary))] pt-24">
       <article className="container mx-auto px-6 py-16">
         <div className="max-w-3xl mx-auto">
           <Link 
             href="/blog" 
-            className="text-indigo-400 hover:text-indigo-300 mb-8 inline-block"
+            className="text-indigo-500 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 mb-8 inline-block"
           >
             ← Back to Blog
           </Link>
 
           <header className="mb-12">
-            <time className="text-sm text-indigo-400 font-semibold">
+            <time className="text-sm text-indigo-500 dark:text-indigo-400 font-semibold">
               {new Date(post.date).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
               })}
             </time>
-            <h1 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold mt-4 mb-6 text-[rgb(var(--text-primary))]">
               {post.title}
             </h1>
-            <div className="flex items-center text-gray-400">
+            <div className="flex items-center text-[rgb(var(--text-tertiary))]">
               <span>By {post.author}</span>
             </div>
           </header>
 
           <div 
-            className="prose prose-invert prose-lg max-w-none
-              prose-headings:font-bold prose-headings:text-white
-              prose-p:text-gray-300 prose-p:leading-relaxed
-              prose-a:text-indigo-400 prose-a:no-underline hover:prose-a:text-indigo-300
-              prose-strong:text-white prose-strong:font-semibold
-              prose-ul:text-gray-300 prose-ol:text-gray-300
-              prose-li:text-gray-300 prose-li:my-2
-              prose-code:text-indigo-300 prose-code:bg-gray-800 prose-code:px-2 prose-code:py-1 prose-code:rounded
-              prose-pre:bg-gray-800 prose-pre:border prose-pre:border-gray-700
-              prose-blockquote:border-l-indigo-500 prose-blockquote:text-gray-400"
+            className="prose dark:prose-invert prose-lg max-w-none
+              prose-headings:font-bold prose-headings:text-[rgb(var(--text-primary))]
+              prose-p:text-[rgb(var(--text-secondary))] prose-p:leading-relaxed
+              prose-a:text-indigo-500 dark:prose-a:text-indigo-400 prose-a:no-underline hover:prose-a:text-indigo-600 dark:hover:prose-a:text-indigo-300
+              prose-strong:text-[rgb(var(--text-primary))] prose-strong:font-semibold
+              prose-ul:text-[rgb(var(--text-secondary))] prose-ol:text-[rgb(var(--text-secondary))]
+              prose-li:text-[rgb(var(--text-secondary))] prose-li:my-2
+              prose-code:text-indigo-600 dark:prose-code:text-indigo-300 prose-code:bg-[rgb(var(--bg-tertiary))] prose-code:px-2 prose-code:py-1 prose-code:rounded
+              prose-pre:bg-[rgb(var(--bg-tertiary))] prose-pre:border prose-pre:border-[rgb(var(--border-color))]
+              prose-blockquote:border-l-indigo-500 prose-blockquote:text-[rgb(var(--text-tertiary))]"
             dangerouslySetInnerHTML={{ __html: post.contentHtml }}
           />
 
           {/* Newsletter CTA at bottom of post */}
-          <div className="mt-16 bg-gradient-to-br from-indigo-900/30 to-purple-900/30 border border-gray-700/50 rounded-2xl p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4">Ready to try DriftBox?</h3>
-            <p className="text-gray-400 mb-6">
+          <div className="mt-16 bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 border border-[rgb(var(--border-color))] rounded-2xl p-8 text-center">
+            <h3 className="text-2xl font-bold mb-4 text-[rgb(var(--text-primary))]">Ready to try DriftBox?</h3>
+            <p className="text-[rgb(var(--text-tertiary))] mb-6">
               Join the waitlist and get early access when we launch
             </p>
             <form 
@@ -161,7 +161,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
                   name="email"
                   placeholder="Enter your email"
                   required
-                  className="flex-1 px-6 py-3 bg-gray-800/50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white placeholder-gray-400"
+                  className="flex-1 px-6 py-3 bg-[rgb(var(--bg-tertiary))] border border-[rgb(var(--border-color))] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-[rgb(var(--text-primary))] placeholder-[rgb(var(--text-tertiary))]"
                 />
                 <button
                   type="submit"
