@@ -12,15 +12,15 @@ export default function FinalCTA() {
   }
 
   return (
-    <section id="waitlist" className="py-24 bg-gradient-to-br from-indigo-900/30 to-purple-900/30 border-t border-gray-800">
+    <section id="waitlist" className="py-24 bg-gradient-to-br from-indigo-100 dark:from-indigo-900/30 to-purple-100 dark:to-purple-900/30 border-t border-slate-200 dark:border-gray-800">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Ready to Stop <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Losing Conversations?</span>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-slate-900 dark:text-white">
+            Ready to Stop <span className="gradient-text">Losing Conversations?</span>
           </h2>
-          <p className="text-xl text-gray-300 mb-12">
+          <p className="text-xl text-slate-600 dark:text-gray-300 mb-12">
             Join the waitlist and get early access when we launch. 
-            <span className="block mt-2 text-indigo-400 font-semibold">Free during beta. No credit card required.</span>
+            <span className="block mt-2 text-indigo-600 dark:text-indigo-400 font-semibold">Free during beta. No credit card required.</span>
           </p>
 
           <form 
@@ -48,7 +48,7 @@ export default function FinalCTA() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 required
-                className="flex-1 px-6 py-4 bg-gray-800/50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white placeholder-gray-400"
+                className="flex-1 px-6 py-4 bg-white dark:bg-gray-800/50 border border-slate-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-400"
               />
               <button
                 type="submit"
@@ -60,8 +60,8 @@ export default function FinalCTA() {
             </div>
           </form>
 
-          <p className="mt-8 text-sm text-gray-400">
-            Join <span className="text-indigo-400 font-semibold">500+</span> professionals already on the waitlist
+          <p className="mt-8 text-sm text-slate-500 dark:text-gray-400">
+            Be among the first to experience DriftBox.
           </p>
         </div>
       </div>

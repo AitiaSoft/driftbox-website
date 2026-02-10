@@ -51,13 +51,13 @@ export default function Pricing() {
   ]
 
   return (
-    <section id="pricing" className="py-24 bg-gray-900/50">
+    <section id="pricing" className="py-24 bg-slate-100 dark:bg-gray-900/50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">
             Simple, <span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">Transparent</span> Pricing
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 dark:text-gray-400 max-w-2xl mx-auto">
             Choose the plan that fits your needs. Free during beta.
           </p>
         </div>
@@ -68,8 +68,8 @@ export default function Pricing() {
               key={index}
               className={`relative rounded-2xl p-8 ${
                 plan.highlighted
-                  ? 'bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border-2 border-indigo-500/50'
-                  : 'bg-gray-800/50 border border-gray-700/50'
+                  ? 'bg-gradient-to-br from-indigo-500/10 dark:from-indigo-500/20 to-purple-500/10 dark:to-purple-500/20 border-2 border-indigo-500/50'
+                  : 'bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/50 shadow-sm dark:shadow-none'
               } hover:scale-105 transition-all duration-300`}
             >
               {plan.highlighted && (
@@ -80,20 +80,20 @@ export default function Pricing() {
               
               <div className="mb-8">
                 <h3 className="text-2xl font-bold mb-2 text-slate-900 dark:text-white">{plan.name}</h3>
-                <p className="text-gray-400 text-sm mb-4">{plan.description}</p>
+                <p className="text-slate-500 dark:text-gray-400 text-sm mb-4">{plan.description}</p>
                 <div className="flex items-baseline">
-                  <span className="text-5xl font-bold">{plan.price}</span>
-                  <span className="text-gray-400 ml-2">{plan.period}</span>
+                  <span className="text-5xl font-bold text-slate-900 dark:text-white">{plan.price}</span>
+                  <span className="text-slate-500 dark:text-gray-400 ml-2">{plan.period}</span>
                 </div>
               </div>
 
               <ul className="space-y-4 mb-8">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-start">
-                    <svg className="w-5 h-5 text-indigo-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-indigo-500 dark:text-indigo-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-gray-300">{feature}</span>
+                    <span className="text-slate-700 dark:text-gray-300">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -103,7 +103,7 @@ export default function Pricing() {
                 className={`block w-full py-3 px-6 rounded-lg text-center font-semibold transition-all duration-300 ${
                   plan.highlighted
                     ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:shadow-lg hover:shadow-indigo-500/50'
-                    : 'bg-gray-700/50 text-white hover:bg-gray-700'
+                    : 'bg-slate-100 dark:bg-gray-700/50 text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-gray-700'
                 }`}
               >
                 {plan.cta}

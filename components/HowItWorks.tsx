@@ -33,13 +33,13 @@ export default function HowItWorks() {
   ]
 
   return (
-    <section id="how-it-works" className="py-24 bg-gray-900/50">
+    <section id="how-it-works" className="py-24 bg-slate-100 dark:bg-gray-900/50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">
             How It <span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">Works</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 dark:text-gray-400 max-w-2xl mx-auto">
             Three simple steps to never lose track of a conversation again
           </p>
         </div>
@@ -48,14 +48,14 @@ export default function HowItWorks() {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 hover:border-indigo-500/50 transition-all duration-300"
+              className="relative bg-white dark:bg-gray-800/50 backdrop-blur-sm border border-slate-200 dark:border-gray-700/50 rounded-2xl p-8 hover:border-indigo-500/50 transition-all duration-300 shadow-sm dark:shadow-none"
             >
               <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center text-white font-bold">
                 {step.number}
               </div>
-              <div className="text-indigo-400 mb-4">{step.icon}</div>
-              <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
-              <p className="text-gray-400">{step.description}</p>
+              <div className="text-indigo-500 dark:text-indigo-400 mb-4">{step.icon}</div>
+              <h3 className="text-xl font-semibold mb-3 text-slate-900 dark:text-white">{step.title}</h3>
+              <p className="text-slate-600 dark:text-gray-400">{step.description}</p>
             </div>
           ))}
         </div>
