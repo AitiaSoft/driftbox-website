@@ -7,7 +7,7 @@ export default function ProblemStats() {
   ]
 
   return (
-    <section className="py-20 px-6 border-y border-slate-800">
+    <section className="py-20 px-6 border-y border-slate-200 dark:border-slate-800">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
           {stats.map((stat, i) => (
@@ -15,7 +15,7 @@ export default function ProblemStats() {
               <div className="text-5xl font-extrabold tracking-tight gradient-text mb-2">
                 {stat.number}
               </div>
-              <div className="text-sm text-slate-400 leading-relaxed">
+              <div className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                 {stat.label}
               </div>
             </div>

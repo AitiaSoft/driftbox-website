@@ -69,7 +69,7 @@ export default function Features() {
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
             Everything you need to <span className="gradient-text">never miss a thing</span>
           </h2>
-          <p className="text-lg text-slate-400">DriftBox doesn't just aggregate messages. It understands them.</p>
+          <p className="text-lg text-slate-600 dark:text-slate-400">DriftBox doesn't just aggregate messages. It understands them.</p>
         </div>
 
         {/* Features Grid */}
@@ -77,13 +77,13 @@ export default function Features() {
           {features.map((feature, i) => (
             <div
               key={i}
-              className="p-9 bg-slate-900 border border-slate-800 rounded-2xl hover:bg-slate-800/50 hover:border-indigo-600/20 hover:-translate-y-1 transition-all"
+              className="p-9 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:border-indigo-600/20 hover:-translate-y-1 transition-all"
             >
               <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-indigo-600/10 text-indigo-400 mb-5">
                 {feature.icon}
               </div>
               <h3 className="text-lg font-bold mb-2.5">{feature.title}</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">{feature.description}</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>

@@ -55,7 +55,7 @@ export default function Hero() {
         </h1>
 
         {/* Subtitle */}
-        <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+        <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed">
           DriftBox captures every conversation across email, Slack, Teams, and WhatsApp — 
           then surfaces what matters. Stop losing decisions in message threads. 
           Start knowing everything, effortlessly.
@@ -70,7 +70,7 @@ export default function Hero() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
-              className="flex-1 px-5 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-indigo-500 transition-colors"
+              className="flex-1 px-5 py-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-indigo-500 transition-colors"
             />
             <button
               type="submit"
@@ -87,7 +87,7 @@ export default function Hero() {
             </button>
           </div>
         </form>
-        <p className="text-sm text-slate-500">Free during beta. No credit card required.</p>
+        <p className="text-sm text-slate-500 dark:text-slate-500">Free during beta. No credit card required.</p>
 
         {/* App Preview */}
         <div className="mt-16 max-w-5xl mx-auto perspective-1000">
