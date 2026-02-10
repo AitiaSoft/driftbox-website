@@ -9,24 +9,30 @@ interface BlogPost {
   date: string
   excerpt: string
   author?: string
+  readingTime: number
+}
+
+function getReadingTime(content: string): number {
+  const words = content.trim().split(/\s+/).length
+  return Math.max(1, Math.round(words / 200))
 }
 
 function getBlogPosts(): BlogPost[] {
   const postsDirectory = path.join(process.cwd(), 'content/blog')
-  
+
   if (!fs.existsSync(postsDirectory)) {
     return []
   }
 
   const fileNames = fs.readdirSync(postsDirectory)
-  
+
   const posts = fileNames
     .filter(fileName => fileName.endsWith('.md'))
     .map((fileName) => {
       const slug = fileName.replace(/\.md$/, '')
       const fullPath = path.join(postsDirectory, fileName)
       const fileContents = fs.readFileSync(fullPath, 'utf8')
-      const { data } = matter(fileContents)
+      const { data, content } = matter(fileContents)
 
       return {
         slug,
@@ -34,6 +40,7 @@ function getBlogPosts(): BlogPost[] {
         date: data.date || '',
         excerpt: data.excerpt || '',
         author: data.author || 'DriftBox Team',
+        readingTime: getReadingTime(content),
       }
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1))
@@ -70,13 +77,17 @@ export default function BlogPage() {
                   className="block group"
                 >
                   <article className="bg-[rgb(var(--bg-secondary))]/50 backdrop-blur-sm border border-[rgb(var(--border-color))] rounded-2xl p-8 hover:border-indigo-500/50 transition-all duration-300">
-                    <time className="text-sm text-indigo-500 dark:text-indigo-400 font-semibold">
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </time>
+                    <div className="flex items-center gap-3 text-sm">
+                      <time className="text-indigo-500 dark:text-indigo-400 font-semibold">
+                        {new Date(post.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
+                      </time>
+                      <span className="text-[rgb(var(--text-tertiary))]">&middot;</span>
+                      <span className="text-[rgb(var(--text-tertiary))]">{post.readingTime} min read</span>
+                    </div>
                     <h2 className="text-3xl font-bold mt-4 mb-4 text-[rgb(var(--text-primary))] group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors">
                       {post.title}
                     </h2>
@@ -84,7 +95,7 @@ export default function BlogPage() {
                     <div className="flex items-center justify-between">
                       <span className="text-[rgb(var(--text-tertiary))] text-sm">{post.author}</span>
                       <span className="text-indigo-500 dark:text-indigo-400 font-semibold group-hover:translate-x-2 transition-transform">
-                        Read more →
+                        Read more &rarr;
                       </span>
                     </div>
                   </article>
@@ -99,22 +110,22 @@ export default function BlogPage() {
             <p className="text-[rgb(var(--text-tertiary))] mb-6">
               Get notified when we publish new articles and product updates
             </p>
-            <form 
-              action="https://formsubmit.co/rvaldez@aitiasoft.com" 
+            <form
+              action="https://formsubmit.co/rvaldez@aitiasoft.com"
               method="POST"
               className="max-w-md mx-auto"
             >
               <input type="hidden" name="_subject" value="DriftBox Blog Newsletter Signup" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_next" value="https://driftbox.ai/blog" />
-              <input 
-                type="text" 
-                name="_honey" 
-                style={{ display: 'none' }} 
-                tabIndex={-1} 
-                autoComplete="off" 
+              <input
+                type="text"
+                name="_honey"
+                style={{ display: 'none' }}
+                tabIndex={-1}
+                autoComplete="off"
               />
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <input
                   type="email"
