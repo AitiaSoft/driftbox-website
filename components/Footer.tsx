@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-slate-800 py-16">
+    <footer className="border-t border-slate-200 dark:border-slate-800 py-16">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-12">
           {/* Brand */}
@@ -19,42 +19,42 @@ export default function Footer() {
                   </linearGradient>
                 </defs>
               </svg>
-              <span className="text-xl font-extrabold">DriftBox</span>
+              <span className="text-xl font-extrabold text-slate-900 dark:text-white">DriftBox</span>
             </Link>
-            <p className="text-slate-400 text-sm">Never let a conversation drift away.</p>
+            <p className="text-slate-600 dark:text-slate-400 text-sm">Never let a conversation drift away.</p>
           </div>
 
           {/* Links */}
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4">Product</h4>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-500 mb-4">Product</h4>
             <div className="space-y-3">
-              <Link href="/#features" className="block text-sm text-slate-400 hover:text-slate-100">Features</Link>
-              <Link href="/#pricing" className="block text-sm text-slate-400 hover:text-slate-100">Pricing</Link>
-              <Link href="/#how-it-works" className="block text-sm text-slate-400 hover:text-slate-100">How It Works</Link>
+              <Link href="/#features" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Features</Link>
+              <Link href="/#pricing" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Pricing</Link>
+              <Link href="/#how-it-works" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">How It Works</Link>
             </div>
           </div>
 
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4">Company</h4>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-500 mb-4">Company</h4>
             <div className="space-y-3">
-              <Link href="/blog" className="block text-sm text-slate-400 hover:text-slate-100">Blog</Link>
-              <a href="#" className="block text-sm text-slate-400 hover:text-slate-100">About</a>
-              <a href="#" className="block text-sm text-slate-400 hover:text-slate-100">Careers</a>
+              <Link href="/blog" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Blog</Link>
+              <a href="#" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">About</a>
+              <a href="#" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Careers</a>
             </div>
           </div>
 
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4">Legal</h4>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-500 mb-4">Legal</h4>
             <div className="space-y-3">
-              <a href="#" className="block text-sm text-slate-400 hover:text-slate-100">Privacy</a>
-              <a href="#" className="block text-sm text-slate-400 hover:text-slate-100">Terms</a>
-              <a href="#" className="block text-sm text-slate-400 hover:text-slate-100">Security</a>
+              <a href="#" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Privacy</a>
+              <a href="#" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Terms</a>
+              <a href="#" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Security</a>
             </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-slate-800 text-center">
-          <p className="text-sm text-slate-500">&copy; 2026 AitiaSoft. All rights reserved.</p>
+        <div className="pt-8 border-t border-slate-200 dark:border-slate-800 text-center">
+          <p className="text-sm text-slate-500 dark:text-slate-500">&copy; 2026 AitiaSoft. All rights reserved.</p>
         </div>
       </div>
     </footer>
