@@ -38,17 +38,8 @@ export default function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-500 mb-4">Company</h4>
             <div className="space-y-3">
               <Link href="/blog" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Blog</Link>
-              <a href="#" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">About</a>
-              <a href="#" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Careers</a>
-            </div>
-          </div>
-
-          <div className="lg:col-span-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-500 mb-4">Legal</h4>
-            <div className="space-y-3">
-              <a href="#" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Privacy</a>
-              <a href="#" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Terms</a>
-              <a href="#" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Security</a>
+              <a href="https://aitiasoft.com" target="_blank" rel="noopener noreferrer" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">About</a>
+              <a href="https://aitiasoft.com#contact" target="_blank" rel="noopener noreferrer" className="block text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Contact</a>
             </div>
           </div>
         </div>
