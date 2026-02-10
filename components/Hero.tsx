@@ -49,7 +49,7 @@ export default function Hero() {
         </div>
 
         {/* Hero Title */}
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6">
+        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6 text-slate-900 dark:text-white">
           Your conversations are everywhere.<br />
           <span className="gradient-text">Your insights shouldn't be.</span>
         </h1>

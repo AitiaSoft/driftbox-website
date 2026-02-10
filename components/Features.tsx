@@ -66,7 +66,7 @@ export default function Features() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-slate-900 dark:text-white">
             Everything you need to <span className="gradient-text">never miss a thing</span>
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400">DriftBox doesn't just aggregate messages. It understands them.</p>
@@ -82,7 +82,7 @@ export default function Features() {
               <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-indigo-600/10 text-indigo-400 mb-5">
                 {feature.icon}
               </div>
-              <h3 className="text-lg font-bold mb-2.5">{feature.title}</h3>
+              <h3 className="text-lg font-bold mb-2.5 text-slate-900 dark:text-white">{feature.title}</h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{feature.description}</p>
             </div>
           ))}

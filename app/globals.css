@@ -43,7 +43,11 @@
 
 @layer utilities {
   .gradient-text {
-    @apply bg-gradient-to-r from-indigo-400 via-purple-400 to-purple-300 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-indigo-600 via-purple-600 to-purple-500 bg-clip-text text-transparent;
+  }
+  
+  .dark .gradient-text {
+    @apply from-indigo-400 via-purple-400 to-purple-300;
   }
   
   .gradient-bg {

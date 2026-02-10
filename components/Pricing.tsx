@@ -79,7 +79,7 @@ export default function Pricing() {
               )}
               
               <div className="mb-8">
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                <h3 className="text-2xl font-bold mb-2 text-slate-900 dark:text-white">{plan.name}</h3>
                 <p className="text-gray-400 text-sm mb-4">{plan.description}</p>
                 <div className="flex items-baseline">
                   <span className="text-5xl font-bold">{plan.price}</span>
