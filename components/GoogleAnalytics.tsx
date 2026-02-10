@@ -3,7 +3,7 @@
 import Script from 'next/script'
 
 export default function GoogleAnalytics() {
-  const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX' // Roberto will replace this
+  const GA_MEASUREMENT_ID = 'G-N93PWS5W77'
 
   return (
     <>
