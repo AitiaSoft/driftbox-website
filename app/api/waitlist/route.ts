@@ -102,6 +102,38 @@ export async function POST(request: NextRequest) {
         // Don't fail the request if Telegram notification fails
       }
     }
+
+    // Send email notification to Roberto via FormSubmit.co
+    try {
+      const signupTimestamp = data[0]?.signed_up_at || new Date().toISOString()
+      const formattedTimestamp = new Date(signupTimestamp).toLocaleString('en-US', {
+        timeZone: 'America/New_York',
+        dateStyle: 'full',
+        timeStyle: 'short'
+      })
+
+      const emailBody = `New signup!\n\nEmail: ${email.toLowerCase().trim()}\nSigned up: ${formattedTimestamp} EST\nTotal waitlist: ${totalCount}`
+
+      const formData = new URLSearchParams()
+      formData.append('_subject', 'New DriftBox Waitlist Signup')
+      formData.append('_captcha', 'false')
+      formData.append('email', email.toLowerCase().trim())
+      formData.append('message', emailBody)
+      formData.append('timestamp', formattedTimestamp)
+      formData.append('total_signups', totalCount.toString())
+
+      await fetch('https://formsubmit.co/rvaldez@aitiasoft.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json'
+        },
+        body: formData
+      })
+    } catch (emailError) {
+      console.error('Failed to send email notification:', emailError)
+      // Don't fail the request if email notification fails
+    }
     
     return NextResponse.json(
       { success: true, message: 'Successfully added to waitlist', data },
