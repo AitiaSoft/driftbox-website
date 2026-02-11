@@ -1,5 +1,77 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+async function getGraphToken() {
+  const tenantId = process.env.MS_TENANT_ID
+  const clientId = process.env.MS_CLIENT_ID
+  const clientSecret = process.env.MS_CLIENT_SECRET
+
+  if (!tenantId || !clientId || !clientSecret) return null
+
+  const tokenResponse = await fetch(
+    `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        client_id: clientId,
+        client_secret: clientSecret,
+        scope: 'https://graph.microsoft.com/.default',
+        grant_type: 'client_credentials'
+      })
+    }
+  )
+
+  if (!tokenResponse.ok) return null
+  const tokenData = await tokenResponse.json()
+  return tokenData.access_token
+}
+
+async function sendEmailNotification(signupEmail: string, totalCount: string, signupTimestamp: string) {
+  const token = await getGraphToken()
+  if (!token) {
+    console.error('Could not get Graph API token for email notification')
+    return
+  }
+
+  const formattedTimestamp = new Date(signupTimestamp).toLocaleString('en-US', {
+    timeZone: 'America/New_York',
+    dateStyle: 'full',
+    timeStyle: 'short'
+  })
+
+  const senderEmail = process.env.MS_EMAIL || 'kit@aitiasoft.com'
+
+  await fetch(
+    `https://graph.microsoft.com/v1.0/users/${senderEmail}/sendMail`,
+    {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: {
+          subject: '🎉 New DriftBox Waitlist Signup',
+          body: {
+            contentType: 'HTML',
+            content: `
+              <h3>New DriftBox Waitlist Signup!</h3>
+              <p><strong>Email:</strong> ${signupEmail}</p>
+              <p><strong>Signed up:</strong> ${formattedTimestamp} EST</p>
+              <p><strong>Total waitlist:</strong> ${totalCount}</p>
+              <br>
+              <p><a href="https://supabase.com/dashboard/project/ubiadvbpaviaocxhqflc/editor">View all signups in Supabase →</a></p>
+            `
+          },
+          toRecipients: [
+            { emailAddress: { address: 'rvaldez@aitiasoft.com' } }
+          ]
+        }
+      })
+    }
+  )
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { email } = await request.json()
@@ -44,7 +116,6 @@ export async function POST(request: NextRequest) {
       const errorData = await response.text()
       console.error('Supabase error:', errorData)
       
-      // Check if it's a duplicate email error
       if (response.status === 409) {
         return NextResponse.json(
           { error: 'This email is already on the waitlist' },
@@ -74,7 +145,6 @@ export async function POST(request: NextRequest) {
     if (countResponse.ok) {
       const countHeader = countResponse.headers.get('content-range')
       if (countHeader) {
-        // Format: "0-24/25" where 25 is the total count
         const match = countHeader.match(/\/(\d+)$/)
         if (match) {
           totalCount = match[1]
@@ -82,16 +152,15 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Send Telegram notification to Roberto
+    const signupTimestamp = data[0]?.signed_up_at || new Date().toISOString()
+
+    // Send Telegram notification
     if (telegramBotToken) {
-      const telegramMessage = `🎉 New DriftBox waitlist signup!\n\nEmail: ${email.toLowerCase().trim()}\nTotal signups: ${totalCount}`
-      
       try {
+        const telegramMessage = `🎉 New DriftBox waitlist signup!\n\nEmail: ${email.toLowerCase().trim()}\nTotal signups: ${totalCount}`
         await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             chat_id: '8559715114',
             text: telegramMessage
@@ -99,40 +168,14 @@ export async function POST(request: NextRequest) {
         })
       } catch (telegramError) {
         console.error('Failed to send Telegram notification:', telegramError)
-        // Don't fail the request if Telegram notification fails
       }
     }
 
-    // Send email notification to Roberto via FormSubmit.co
+    // Send email notification via Microsoft Graph
     try {
-      const signupTimestamp = data[0]?.signed_up_at || new Date().toISOString()
-      const formattedTimestamp = new Date(signupTimestamp).toLocaleString('en-US', {
-        timeZone: 'America/New_York',
-        dateStyle: 'full',
-        timeStyle: 'short'
-      })
-
-      const emailBody = `New signup!\n\nEmail: ${email.toLowerCase().trim()}\nSigned up: ${formattedTimestamp} EST\nTotal waitlist: ${totalCount}`
-
-      const formData = new URLSearchParams()
-      formData.append('_subject', 'New DriftBox Waitlist Signup')
-      formData.append('_captcha', 'false')
-      formData.append('email', email.toLowerCase().trim())
-      formData.append('message', emailBody)
-      formData.append('timestamp', formattedTimestamp)
-      formData.append('total_signups', totalCount.toString())
-
-      await fetch('https://formsubmit.co/rvaldez@aitiasoft.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json'
-        },
-        body: formData
-      })
+      await sendEmailNotification(email.toLowerCase().trim(), totalCount, signupTimestamp)
     } catch (emailError) {
       console.error('Failed to send email notification:', emailError)
-      // Don't fail the request if email notification fails
     }
     
     return NextResponse.json(
