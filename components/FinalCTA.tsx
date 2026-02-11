@@ -5,11 +5,36 @@ import ScrollReveal from './ScrollReveal'
 
 export default function FinalCTA() {
   const [email, setEmail] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    setIsSubmitting(true)
-    // FormSubmit.co will handle the actual submission
+    e.preventDefault()
+    setStatus('loading')
+
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email })
+      })
+
+      if (response.ok) {
+        setStatus('success')
+        setEmail('')
+        setTimeout(() => setStatus('idle'), 3000)
+      } else {
+        const errorData = await response.json()
+        console.error('Waitlist signup error:', errorData)
+        setStatus('error')
+        setTimeout(() => setStatus('idle'), 3000)
+      }
+    } catch (error) {
+      console.error('Network error:', error)
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 3000)
+    }
   }
 
   return (
@@ -40,25 +65,11 @@ export default function FinalCTA() {
           <ScrollReveal delay={200}>
             <form
               onSubmit={handleSubmit}
-              action="https://formsubmit.co/rvaldez@aitiasoft.com"
-              method="POST"
               className="max-w-md mx-auto"
             >
-              <input type="hidden" name="_subject" value="DriftBox Waitlist Signup - Footer" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="https://driftbox.ai/#waitlist" />
-              <input
-                type="text"
-                name="_honey"
-                style={{ display: 'none' }}
-                tabIndex={-1}
-                autoComplete="off"
-              />
-
               <div className="flex flex-col sm:flex-row gap-3 p-1.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg shadow-slate-200/50 dark:shadow-black/20">
                 <input
                   type="email"
-                  name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
@@ -67,10 +78,16 @@ export default function FinalCTA() {
                 />
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold rounded-xl shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={status === 'loading'}
+                  className={`px-8 py-4 font-semibold rounded-xl shadow-lg transition-all duration-300 ${
+                    status === 'success'
+                      ? 'bg-emerald-600 text-white'
+                      : status === 'error'
+                      ? 'bg-red-600 text-white'
+                      : 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5'
+                  } disabled:opacity-50 disabled:cursor-not-allowed`}
                 >
-                  {isSubmitting ? 'Joining...' : 'Get Early Access'}
+                  {status === 'loading' ? 'Joining...' : status === 'success' ? 'Done!' : status === 'error' ? 'Error' : 'Get Early Access'}
                 </button>
               </div>
             </form>

@@ -11,16 +11,13 @@ export default function Hero() {
     e.preventDefault()
     setStatus('loading')
 
-    const formData = new FormData()
-    formData.append('email', email)
-    formData.append('_subject', 'DriftBox Waitlist Signup')
-    formData.append('_captcha', 'false')
-
     try {
-      const response = await fetch('https://formsubmit.co/rvaldez@aitiasoft.com', {
+      const response = await fetch('/api/waitlist', {
         method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email })
       })
 
       if (response.ok) {
@@ -28,10 +25,13 @@ export default function Hero() {
         setEmail('')
         setTimeout(() => setStatus('idle'), 3000)
       } else {
+        const errorData = await response.json()
+        console.error('Waitlist signup error:', errorData)
         setStatus('error')
         setTimeout(() => setStatus('idle'), 3000)
       }
     } catch (error) {
+      console.error('Network error:', error)
       setStatus('error')
       setTimeout(() => setStatus('idle'), 3000)
     }
