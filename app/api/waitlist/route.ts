@@ -15,6 +15,7 @@ export async function POST(request: NextRequest) {
     // Get Supabase credentials from environment variables
     const supabaseUrl = process.env.SUPABASE_URL
     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+    const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN
 
     if (!supabaseUrl || !supabaseKey) {
       console.error('Missing Supabase credentials')
@@ -58,6 +59,49 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await response.json()
+    
+    // Get total waitlist count
+    const countResponse = await fetch(`${supabaseUrl}/rest/v1/waitlist?select=count`, {
+      headers: {
+        'apikey': supabaseKey,
+        'Authorization': `Bearer ${supabaseKey}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'count=exact'
+      }
+    })
+
+    let totalCount = 'unknown'
+    if (countResponse.ok) {
+      const countHeader = countResponse.headers.get('content-range')
+      if (countHeader) {
+        // Format: "0-24/25" where 25 is the total count
+        const match = countHeader.match(/\/(\d+)$/)
+        if (match) {
+          totalCount = match[1]
+        }
+      }
+    }
+
+    // Send Telegram notification to Roberto
+    if (telegramBotToken) {
+      const telegramMessage = `🎉 New DriftBox waitlist signup!\n\nEmail: ${email.toLowerCase().trim()}\nTotal signups: ${totalCount}`
+      
+      try {
+        await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            chat_id: '8559715114',
+            text: telegramMessage
+          })
+        })
+      } catch (telegramError) {
+        console.error('Failed to send Telegram notification:', telegramError)
+        // Don't fail the request if Telegram notification fails
+      }
+    }
     
     return NextResponse.json(
       { success: true, message: 'Successfully added to waitlist', data },
