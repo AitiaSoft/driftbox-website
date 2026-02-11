@@ -3,58 +3,64 @@ import ScrollReveal from './ScrollReveal'
 export default function Pricing() {
   const plans = [
     {
+      name: 'Free',
+      price: '$0',
+      period: '/month',
+      description: 'For individuals getting started',
+      features: [
+        '1 email account',
+        '1 WhatsApp (manual export)',
+        '5 AI summaries per week',
+        'Basic search',
+        '30-day history',
+        'Community support',
+      ],
+      cta: 'Join Waitlist',
+      highlighted: false,
+    },
+    {
       name: 'Starter',
       price: '$19',
       period: '/month',
-      description: 'Perfect for individuals and small teams',
+      description: 'For professionals who juggle multiple channels',
       features: [
-        'Up to 2 connected channels',
-        '1,000 messages per month',
-        'Basic AI search',
+        '3 email accounts',
+        '1 Teams integration',
+        '1 WhatsApp Business',
+        '50 AI summaries per week',
+        'AI search + commitment tracking',
+        'Per-person conversation timelines',
+        '6-month history',
         'Email support',
-        '7-day history',
       ],
       cta: 'Join Waitlist',
       highlighted: false,
     },
     {
-      name: 'Professional',
+      name: 'Pro',
       price: '$49',
       period: '/month',
-      description: 'For power users and growing teams',
+      description: 'For power users and teams who need it all',
       features: [
-        'Unlimited connected channels',
-        'Unlimited messages',
-        'Advanced AI insights',
+        'Everything in Starter',
+        'Unlimited email accounts',
+        'Unlimited Teams & WhatsApp',
+        'Unlimited AI summaries',
+        'Priority AI processing',
+        'Custom alerts & follow-up reminders',
+        'Export & reporting',
+        'GDPR compliance tools',
+        'Advanced security & audit logs',
+        '2-year history',
         'Priority support',
-        'Unlimited history',
-        'Custom integrations',
-        'Team analytics',
       ],
       cta: 'Join Waitlist',
       highlighted: true,
-    },
-    {
-      name: 'Enterprise',
-      price: 'Custom',
-      period: '',
-      description: 'For large organizations with custom needs',
-      features: [
-        'Everything in Professional',
-        'Dedicated success manager',
-        'Custom AI training',
-        'On-premise deployment',
-        'SLA guarantees',
-        'Advanced security',
-      ],
-      cta: 'Contact Sales',
-      highlighted: false,
     },
   ]
 
   return (
     <section id="pricing" className="py-28 bg-slate-50 dark:bg-slate-950/50 relative overflow-hidden">
-      {/* Background orb behind the highlighted card */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/4 dark:bg-indigo-500/6 rounded-full blur-[120px] -z-10" />
 
       <div className="container mx-auto px-6">
@@ -81,7 +87,6 @@ export default function Pricing() {
               >
                 {plan.highlighted && (
                   <>
-                    {/* Glow behind highlighted card */}
                     <div className="absolute -inset-px rounded-2xl bg-gradient-to-b from-indigo-500/20 to-purple-500/20 -z-10 blur-xl" />
                     <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-5 py-1.5 rounded-full text-sm font-semibold shadow-lg shadow-indigo-500/25">
                       Most Popular
