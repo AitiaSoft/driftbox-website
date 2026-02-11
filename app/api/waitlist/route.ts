@@ -30,7 +30,7 @@ async function sendEmailNotification(signupEmail: string, totalCount: string, si
   const token = await getGraphToken()
   if (!token) {
     console.error('Could not get Graph API token for email notification')
-    return
+    return false
   }
 
   const formattedTimestamp = new Date(signupTimestamp).toLocaleString('en-US', {
@@ -41,7 +41,7 @@ async function sendEmailNotification(signupEmail: string, totalCount: string, si
 
   const senderEmail = process.env.MS_EMAIL || 'kit@aitiasoft.com'
 
-  await fetch(
+  const emailResponse = await fetch(
     `https://graph.microsoft.com/v1.0/users/${senderEmail}/sendMail`,
     {
       method: 'POST',
@@ -70,6 +70,15 @@ async function sendEmailNotification(signupEmail: string, totalCount: string, si
       })
     }
   )
+
+  if (!emailResponse.ok) {
+    const errorText = await emailResponse.text()
+    console.error(`Graph API email failed (${emailResponse.status}):`, errorText)
+    return false
+  }
+  
+  console.log('Email notification sent successfully')
+  return true
 }
 
 export async function POST(request: NextRequest) {
@@ -153,31 +162,36 @@ export async function POST(request: NextRequest) {
     }
 
     const signupTimestamp = data[0]?.signed_up_at || new Date().toISOString()
+    const cleanEmail = email.toLowerCase().trim()
 
-    // Send Telegram notification
-    if (telegramBotToken) {
-      try {
-        const telegramMessage = `🎉 New DriftBox waitlist signup!\n\nEmail: ${email.toLowerCase().trim()}\nTotal signups: ${totalCount}`
-        await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: '8559715114',
-            text: telegramMessage
+    // Send BOTH notifications before returning response
+    // (Vercel may kill the function after response is sent)
+    const notificationResults = await Promise.allSettled([
+      // Telegram notification
+      telegramBotToken
+        ? fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: '8559715114',
+              text: `🎉 New DriftBox waitlist signup!\n\nEmail: ${cleanEmail}\nTotal signups: ${totalCount}`
+            })
           })
-        })
-      } catch (telegramError) {
-        console.error('Failed to send Telegram notification:', telegramError)
-      }
-    }
+        : Promise.resolve(null),
+      // Email notification
+      sendEmailNotification(cleanEmail, totalCount, signupTimestamp)
+    ])
 
-    // Send email notification via Microsoft Graph
-    try {
-      await sendEmailNotification(email.toLowerCase().trim(), totalCount, signupTimestamp)
-    } catch (emailError) {
-      console.error('Failed to send email notification:', emailError)
-    }
-    
+    // Log notification results for debugging
+    notificationResults.forEach((result, i) => {
+      const name = i === 0 ? 'Telegram' : 'Email'
+      if (result.status === 'rejected') {
+        console.error(`${name} notification failed:`, result.reason)
+      } else {
+        console.log(`${name} notification: success`)
+      }
+    })
+
     return NextResponse.json(
       { success: true, message: 'Successfully added to waitlist', data },
       { status: 201 }
