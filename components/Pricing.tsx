@@ -33,7 +33,7 @@ export default function Pricing() {
         'Email support',
       ],
       cta: 'Join Waitlist',
-      highlighted: false,
+      highlighted: true,
     },
     {
       name: 'Pro',
@@ -50,7 +50,7 @@ export default function Pricing() {
         'Priority support',
       ],
       cta: 'Join Waitlist',
-      highlighted: true,
+      highlighted: false,
     },
   ]
 
