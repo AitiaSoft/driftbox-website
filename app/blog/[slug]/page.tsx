@@ -92,10 +92,10 @@ export default async function BlogPost({ params }: BlogPostProps) {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-[rgb(var(--bg-primary))] pt-24 flex items-center justify-center">
+      <div className="min-h-screen bg-drift-bg pt-24 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4 text-[rgb(var(--text-primary))]">Post Not Found</h1>
-          <Link href="/blog" className="text-indigo-500 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300">
+          <h1 className="text-4xl font-bold mb-4 text-drift-text">Post Not Found</h1>
+          <Link href="/blog" className="text-drift-primary hover:text-drift-primary-hover">
             &larr; Back to Blog
           </Link>
         </div>
@@ -104,19 +104,19 @@ export default async function BlogPost({ params }: BlogPostProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[rgb(var(--bg-primary))] pt-24">
+    <div className="min-h-screen bg-drift-bg pt-24">
       <article className="container mx-auto px-6 py-16">
         <div className="max-w-3xl mx-auto">
           <Link
             href="/blog"
-            className="text-indigo-500 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 mb-8 inline-flex items-center gap-2 font-medium transition-colors"
+            className="text-drift-primary hover:text-drift-primary-hover mb-8 inline-flex items-center gap-2 font-medium transition-colors"
           >
             &larr; Back to Blog
           </Link>
 
           <header className="mb-12">
-            <div className="flex items-center gap-3 text-sm text-[rgb(var(--text-tertiary))]">
-              <time className="text-indigo-500 dark:text-indigo-400 font-semibold">
+            <div className="flex items-center gap-3 text-sm text-drift-muted">
+              <time className="text-drift-primary font-semibold">
                 {new Date(post.date).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
@@ -126,16 +126,16 @@ export default async function BlogPost({ params }: BlogPostProps) {
               <span>&middot;</span>
               <span>{post.readingTime} min read</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mt-4 mb-6 text-[rgb(var(--text-primary))] font-display leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold mt-4 mb-6 text-drift-text leading-tight">
               {post.title}
             </h1>
-            <div className="flex items-center text-[rgb(var(--text-tertiary))]">
+            <div className="flex items-center text-drift-muted">
               <span>By {post.author}</span>
             </div>
           </header>
 
           {post.image && (
-            <div className="mb-12 rounded-2xl overflow-hidden border border-[rgb(var(--border-color))]">
+            <div className="mb-12 rounded-xl overflow-hidden border border-drift-border">
               <Image
                 src={post.image}
                 alt={post.title}
@@ -152,12 +152,12 @@ export default async function BlogPost({ params }: BlogPostProps) {
             dangerouslySetInnerHTML={{ __html: post.contentHtml }}
           />
 
-          <hr className="my-16 border-[rgb(var(--border-color))]" />
+          <hr className="my-16 border-drift-border" />
 
           {/* Newsletter CTA */}
-          <div className="bg-[rgb(var(--bg-secondary))] border border-[rgb(var(--border-color))] rounded-2xl p-8 md:p-10 text-center">
-            <h3 className="text-2xl font-bold mb-3 text-[rgb(var(--text-primary))] font-display">Ready to try DriftBox?</h3>
-            <p className="text-[rgb(var(--text-tertiary))] mb-6 max-w-md mx-auto">
+          <div className="bg-drift-surface border border-drift-border rounded-xl p-8 md:p-10 text-center">
+            <h3 className="text-2xl font-bold mb-3 text-drift-text">Ready to try DriftBox?</h3>
+            <p className="text-drift-muted mb-6 max-w-md mx-auto">
               Join the waitlist and get early access when we launch
             </p>
             <form
@@ -182,11 +182,11 @@ export default async function BlogPost({ params }: BlogPostProps) {
                   name="email"
                   placeholder="Enter your email"
                   required
-                  className="flex-1 px-5 py-3 bg-[rgb(var(--bg-tertiary))] border border-[rgb(var(--border-color))] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-[rgb(var(--text-primary))] placeholder-[rgb(var(--text-tertiary))]"
+                  className="flex-1 px-5 py-3 bg-drift-hover border border-drift-border rounded-xl focus:outline-none focus:ring-2 focus:ring-drift-primary/50 text-drift-text placeholder-drift-muted/60"
                 />
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300"
+                  className="px-6 py-3 bg-drift-primary text-white font-semibold rounded-xl hover:bg-drift-primary-hover hover:shadow-lg hover:shadow-drift-primary/25 transition-all duration-300"
                 >
                   Get Early Access
                 </button>
