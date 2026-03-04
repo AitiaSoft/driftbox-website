@@ -14,7 +14,7 @@ export default function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="flex items-center gap-1 bg-slate-200/50 dark:bg-slate-800/50 rounded-lg p-1">
+      <div className="flex items-center gap-1 bg-drift-hover/50 rounded-xl p-1">
         <div className="w-8 h-8" />
         <div className="w-8 h-8" />
         <div className="w-8 h-8" />
@@ -25,14 +25,14 @@ export default function ThemeToggle() {
   const currentTheme = theme === 'system' ? systemTheme : theme
 
   return (
-    <div className="flex items-center gap-1 bg-slate-200/50 dark:bg-slate-800/50 rounded-lg p-1">
+    <div className="flex items-center gap-1 bg-drift-hover/50 rounded-xl p-1">
       {/* Light mode button */}
       <button
         onClick={() => setTheme('light')}
-        className={`w-8 h-8 rounded-md flex items-center justify-center transition-colors ${
+        className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
           theme === 'light'
-            ? 'bg-indigo-600 text-white'
-            : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-300/50 dark:hover:bg-slate-700/50'
+            ? 'bg-drift-primary text-white'
+            : 'text-drift-muted hover:text-drift-text hover:bg-drift-hover'
         }`}
         aria-label="Light mode"
         title="Light mode"
@@ -46,10 +46,10 @@ export default function ThemeToggle() {
       {/* Dark mode button */}
       <button
         onClick={() => setTheme('dark')}
-        className={`w-8 h-8 rounded-md flex items-center justify-center transition-colors ${
+        className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
           theme === 'dark'
-            ? 'bg-indigo-600 text-white'
-            : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-300/50 dark:hover:bg-slate-700/50'
+            ? 'bg-drift-primary text-white'
+            : 'text-drift-muted hover:text-drift-text hover:bg-drift-hover'
         }`}
         aria-label="Dark mode"
         title="Dark mode"
@@ -62,10 +62,10 @@ export default function ThemeToggle() {
       {/* System mode button */}
       <button
         onClick={() => setTheme('system')}
-        className={`w-8 h-8 rounded-md flex items-center justify-center transition-colors ${
+        className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
           theme === 'system'
-            ? 'bg-indigo-600 text-white'
-            : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-300/50 dark:hover:bg-slate-700/50'
+            ? 'bg-drift-primary text-white'
+            : 'text-drift-muted hover:text-drift-text hover:bg-drift-hover'
         }`}
         aria-label="System mode"
         title="System mode"

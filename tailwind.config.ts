@@ -10,18 +10,26 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['var(--font-outfit)', 'system-ui', 'sans-serif'],
-        body: ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       colors: {
-        primary: '#6366F1',
-        'primary-dark': '#4F46E5',
-        'primary-light': '#818CF8',
-        accent: '#8B5CF6',
-      },
-      backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, #6366F1, #8B5CF6)',
-        'gradient-text': 'linear-gradient(135deg, #818CF8, #8B5CF6, #C084FC)',
+        drift: {
+          bg: 'rgb(var(--color-bg) / <alpha-value>)',
+          surface: 'rgb(var(--color-surface) / <alpha-value>)',
+          card: 'rgb(var(--color-card) / <alpha-value>)',
+          border: 'rgb(var(--color-border) / <alpha-value>)',
+          'border-hover': 'rgb(var(--color-border-hover) / <alpha-value>)',
+          hover: 'rgb(var(--color-hover) / <alpha-value>)',
+          text: 'rgb(var(--color-text) / <alpha-value>)',
+          muted: 'rgb(var(--color-muted) / <alpha-value>)',
+          primary: 'rgb(var(--color-primary) / <alpha-value>)',
+          'primary-hover': 'rgb(var(--color-primary-hover) / <alpha-value>)',
+          secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+          accent: 'rgb(var(--color-accent) / <alpha-value>)',
+          success: 'rgb(var(--color-success) / <alpha-value>)',
+          warning: 'rgb(var(--color-warning) / <alpha-value>)',
+          danger: 'rgb(var(--color-danger) / <alpha-value>)',
+        },
       },
       keyframes: {
         'shimmer': {

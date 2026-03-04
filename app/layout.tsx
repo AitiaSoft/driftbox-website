@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Outfit, DM_Sans } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -7,15 +7,9 @@ import GoogleAnalytics from '@/components/GoogleAnalytics'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import Script from 'next/script'
 
-const outfit = Outfit({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-outfit',
-  display: 'swap',
-})
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  variable: '--font-dm-sans',
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -82,7 +76,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                const theme = localStorage.getItem('theme') || 'dark';
+                const stored = localStorage.getItem('theme');
+                const theme = stored || 'system';
                 const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
                 const activeTheme = theme === 'system' ? systemTheme : theme;
                 if (activeTheme === 'dark') {
@@ -95,10 +90,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${outfit.variable} ${dmSans.variable} grain-overlay`}>
+      <body className={`${inter.variable} font-sans grain-overlay`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem
           storageKey="theme"
         >

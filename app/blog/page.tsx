@@ -52,21 +52,21 @@ export default function BlogPage() {
   const posts = getBlogPosts()
 
   return (
-    <div className="min-h-screen bg-[rgb(var(--bg-primary))] pt-24">
+    <div className="min-h-screen bg-drift-bg pt-24">
       <div className="container mx-auto px-6 py-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-[rgb(var(--text-primary))]">
-              The DriftBox <span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">Blog</span>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-drift-text">
+              The DriftBox <span className="gradient-text">Blog</span>
             </h1>
-            <p className="text-xl text-[rgb(var(--text-tertiary))]">
+            <p className="text-xl text-drift-muted">
               Insights on communication, AI, and productivity
             </p>
           </div>
 
           {posts.length === 0 ? (
             <div className="text-center py-16">
-              <p className="text-[rgb(var(--text-tertiary))] text-lg">No blog posts yet. Check back soon!</p>
+              <p className="text-drift-muted text-lg">No blog posts yet. Check back soon!</p>
             </div>
           ) : (
             <div className="space-y-12">
@@ -76,25 +76,25 @@ export default function BlogPage() {
                   href={`/blog/${post.slug}`}
                   className="block group"
                 >
-                  <article className="bg-[rgb(var(--bg-secondary))]/50 backdrop-blur-sm border border-[rgb(var(--border-color))] rounded-2xl p-8 hover:border-indigo-500/50 transition-all duration-300">
+                  <article className="bg-drift-card/50 backdrop-blur-sm border border-drift-border rounded-xl p-8 hover:border-drift-primary/50 transition-all duration-300">
                     <div className="flex items-center gap-3 text-sm">
-                      <time className="text-indigo-500 dark:text-indigo-400 font-semibold">
+                      <time className="text-drift-primary font-semibold">
                         {new Date(post.date).toLocaleDateString('en-US', {
                           year: 'numeric',
                           month: 'long',
                           day: 'numeric',
                         })}
                       </time>
-                      <span className="text-[rgb(var(--text-tertiary))]">&middot;</span>
-                      <span className="text-[rgb(var(--text-tertiary))]">{post.readingTime} min read</span>
+                      <span className="text-drift-muted">&middot;</span>
+                      <span className="text-drift-muted">{post.readingTime} min read</span>
                     </div>
-                    <h2 className="text-3xl font-bold mt-4 mb-4 text-[rgb(var(--text-primary))] group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors">
+                    <h2 className="text-3xl font-bold mt-4 mb-4 text-drift-text group-hover:text-drift-primary transition-colors">
                       {post.title}
                     </h2>
-                    <p className="text-[rgb(var(--text-tertiary))] text-lg mb-4">{post.excerpt}</p>
+                    <p className="text-drift-muted text-lg mb-4">{post.excerpt}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-[rgb(var(--text-tertiary))] text-sm">{post.author}</span>
-                      <span className="text-indigo-500 dark:text-indigo-400 font-semibold group-hover:translate-x-2 transition-transform">
+                      <span className="text-drift-muted text-sm">{post.author}</span>
+                      <span className="text-drift-primary font-semibold group-hover:translate-x-2 transition-transform">
                         Read more &rarr;
                       </span>
                     </div>
@@ -105,9 +105,9 @@ export default function BlogPage() {
           )}
 
           {/* Newsletter CTA */}
-          <div className="mt-16 bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 border border-[rgb(var(--border-color))] rounded-2xl p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4 text-[rgb(var(--text-primary))]">Stay Updated</h3>
-            <p className="text-[rgb(var(--text-tertiary))] mb-6">
+          <div className="mt-16 bg-drift-surface border border-drift-border rounded-xl p-8 text-center">
+            <h3 className="text-2xl font-bold mb-4 text-drift-text">Stay Updated</h3>
+            <p className="text-drift-muted mb-6">
               Get notified when we publish new articles and product updates
             </p>
             <form
@@ -132,11 +132,11 @@ export default function BlogPage() {
                   name="email"
                   placeholder="Enter your email"
                   required
-                  className="flex-1 px-6 py-3 bg-[rgb(var(--bg-tertiary))] border border-[rgb(var(--border-color))] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-[rgb(var(--text-primary))] placeholder-[rgb(var(--text-tertiary))]"
+                  className="flex-1 px-6 py-3 bg-drift-hover border border-drift-border rounded-xl focus:outline-none focus:ring-2 focus:ring-drift-primary/50 text-drift-text placeholder-drift-muted/60"
                 />
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300"
+                  className="px-6 py-3 bg-drift-primary text-white font-semibold rounded-xl hover:bg-drift-primary-hover hover:shadow-lg hover:shadow-drift-primary/25 transition-all duration-300"
                 >
                   Subscribe
                 </button>

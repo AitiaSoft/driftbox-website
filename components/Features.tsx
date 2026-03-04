@@ -99,10 +99,10 @@ export default function Features() {
         {/* Header */}
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-slate-900 dark:text-white">
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-drift-text">
               Everything you need to <span className="gradient-text">never miss a thing</span>
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto">DriftBox doesn't just aggregate messages. It understands them.</p>
+            <p className="text-lg text-drift-muted max-w-xl mx-auto">DriftBox doesn't just aggregate messages. It understands them.</p>
           </div>
         </ScrollReveal>
 
@@ -111,13 +111,13 @@ export default function Features() {
           {features.map((feature, i) => (
             <ScrollReveal key={i} delay={i * 80}>
               <div
-                className={`group p-8 bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl ${feature.accent.hoverBorder} hover:-translate-y-1 transition-all duration-300 h-full`}
+                className={`group p-8 bg-drift-card border border-drift-border rounded-xl ${feature.accent.hoverBorder} hover:-translate-y-1 transition-all duration-300 h-full`}
               >
                 <div className={`w-12 h-12 flex items-center justify-center rounded-xl ${feature.accent.iconBg} ${feature.accent.iconText} mb-5 group-hover:scale-110 transition-transform duration-300`}>
                   {feature.icon}
                 </div>
-                <h3 className="text-lg font-bold mb-2.5 text-slate-900 dark:text-white">{feature.title}</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{feature.description}</p>
+                <h3 className="text-lg font-bold mb-2.5 text-drift-text">{feature.title}</h3>
+                <p className="text-sm text-drift-muted leading-relaxed">{feature.description}</p>
               </div>
             </ScrollReveal>
           ))}
