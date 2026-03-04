@@ -106,73 +106,161 @@ export default function Hero() {
             {/* Glow effect under the mockup */}
             <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[80%] h-[60%] bg-drift-primary/10 dark:bg-drift-primary/15 rounded-full blur-[80px] -z-10" />
 
-            <div className="bg-[#0A0A0F] rounded-xl border border-[#2A2A3A] shadow-2xl shadow-black/30 overflow-hidden glow-primary">
+            <div className="bg-drift-bg rounded-xl border border-drift-border shadow-2xl shadow-black/20 dark:shadow-black/30 overflow-hidden glow-primary">
               {/* Browser Chrome */}
-              <div className="flex items-center gap-3 px-5 py-3.5 bg-[#12121A] border-b border-[#2A2A3A]">
+              <div className="flex items-center gap-3 px-5 py-3.5 bg-drift-surface border-b border-drift-border">
                 <div className="flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
                   <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
                   <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
                 </div>
-                <span className="text-xs text-[#8888A0]">DriftBox Dashboard</span>
+                <span className="text-xs text-drift-muted">app.driftbox.ai</span>
               </div>
 
               {/* App Content */}
               <div className="flex">
-                {/* Sidebar */}
-                <div className="w-48 p-4 border-r border-[#2A2A3A] hidden md:block">
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-drift-primary/10 text-[#E8E8ED] text-sm">
-                      <span>📧</span>
-                      <span>Email</span>
-                      <span className="ml-auto text-xs bg-drift-primary px-1.5 py-0.5 rounded-full">3</span>
+                {/* Sidebar — matches real app nav structure */}
+                <div className="w-52 py-4 border-r border-drift-border hidden md:flex flex-col bg-drift-surface">
+                  {/* Logo */}
+                  <div className="px-5 mb-5">
+                    <div className="flex items-center gap-2">
+                      <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="10" fill="#6C5CE7"/>
+                        <path d="M12 14C12 12.8954 12.8954 12 14 12H22C23.1046 12 24 12.8954 24 14V20C24 21.1046 23.1046 22 22 22H16L13 25V22H14C12.8954 22 12 21.1046 12 20V14Z" fill="white" opacity="0.9"/>
+                        <path d="M16 18C16 16.8954 16.8954 16 18 16H26C27.1046 16 28 16.8954 28 18V24C28 25.1046 27.1046 26 26 26H25V29L22 26H18C16.8954 26 16 25.1046 16 24V18Z" fill="white" opacity="0.6"/>
+                      </svg>
+                      <div>
+                        <span className="text-sm font-bold text-drift-text">DriftBox</span>
+                        <span className="block text-[10px] text-drift-muted leading-tight">Communication Intelligence</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#8888A0] text-sm hover:bg-[#22222F] transition-colors">
-                      <span>💬</span>
-                      <span>Slack</span>
-                      <span className="ml-auto text-xs bg-[#2A2A3A] px-1.5 py-0.5 rounded-full">7</span>
+                  </div>
+
+                  {/* Nav sections */}
+                  <div className="px-3 space-y-4 flex-1">
+                    {/* Overview */}
+                    <div>
+                      <span className="px-3 text-[10px] font-semibold uppercase tracking-wider text-drift-muted/60">Overview</span>
+                      <div className="mt-1.5 space-y-0.5">
+                        <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-drift-primary/10 text-drift-primary text-sm font-medium">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                          Dashboard
+                        </div>
+                        <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-drift-muted text-sm">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                          Search
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#8888A0] text-sm hover:bg-[#22222F] transition-colors">
-                      <span>🟣</span>
-                      <span>Teams</span>
-                      <span className="ml-auto text-xs bg-[#2A2A3A] px-1.5 py-0.5 rounded-full">2</span>
+
+                    {/* Intelligence */}
+                    <div>
+                      <span className="px-3 text-[10px] font-semibold uppercase tracking-wider text-drift-muted/60">Intelligence</span>
+                      <div className="mt-1.5 space-y-0.5">
+                        <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-drift-muted text-sm">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                          Summaries
+                        </div>
+                        <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-drift-muted text-sm">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                          Tasks
+                          <span className="ml-auto text-[10px] bg-drift-warning/15 text-drift-warning px-1.5 py-0.5 rounded-full font-medium">3</span>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#8888A0] text-sm hover:bg-[#22222F] transition-colors">
-                      <span>🟢</span>
-                      <span>WhatsApp</span>
-                      <span className="ml-auto text-xs bg-[#2A2A3A] px-1.5 py-0.5 rounded-full">5</span>
+
+                    {/* People */}
+                    <div>
+                      <span className="px-3 text-[10px] font-semibold uppercase tracking-wider text-drift-muted/60">People</span>
+                      <div className="mt-1.5 space-y-0.5">
+                        <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-drift-muted text-sm">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                          Contacts
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Data Sources */}
+                    <div>
+                      <span className="px-3 text-[10px] font-semibold uppercase tracking-wider text-drift-muted/60">Data Sources</span>
+                      <div className="mt-1.5 space-y-0.5">
+                        <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-drift-muted text-sm">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+                          Accounts
+                          <span className="ml-auto text-[10px] bg-drift-success/15 text-drift-success px-1.5 py-0.5 rounded-full font-medium">4</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bottom section */}
+                  <div className="px-3 pt-3 mt-auto border-t border-drift-border">
+                    <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-drift-muted text-sm">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                      AI Chat
                     </div>
                   </div>
                 </div>
 
-                {/* Main Content */}
-                <div className="flex-1 p-4 space-y-3">
-                  <div className="bg-[#1A1A25]/50 border border-[#2A2A3A] rounded-xl p-4 hover:bg-[#1A1A25] transition-colors">
-                    <span className="text-xs px-2.5 py-1 rounded-full bg-red-500/10 text-red-400 font-semibold">🔥 Action Required</span>
-                    <h4 className="text-sm font-semibold mt-2 mb-1 text-[#E8E8ED]">Q1 Budget Approval</h4>
-                    <p className="text-xs text-[#8888A0] mb-2">Sarah mentioned in Slack that the CFO needs your sign-off by Friday. Related email from finance@company.com sent 2h ago.</p>
-                    <div className="flex gap-2 text-xs text-[#8888A0]/60">
-                      <span>📧 Email</span>
-                      <span>💬 Slack #finance</span>
+                {/* Main area */}
+                <div className="flex-1 flex flex-col min-h-0">
+                  {/* Top bar — matches real app */}
+                  <div className="flex items-center justify-between px-5 py-3 border-b border-drift-border">
+                    <span className="text-sm font-semibold text-drift-text">Dashboard</span>
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-1.5 text-[10px] text-drift-success">
+                        <span className="w-1.5 h-1.5 bg-drift-success rounded-full animate-pulse-slow"></span>
+                        Synced
+                      </div>
+                      <div className="flex items-center gap-2 px-3 py-1.5 bg-drift-card border border-drift-border rounded-lg text-xs text-drift-muted">
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        Search...
+                        <kbd className="ml-1 px-1 py-0.5 bg-drift-hover rounded text-[10px] text-drift-muted font-mono">&#8984;K</kbd>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="bg-[#1A1A25]/50 border border-[#2A2A3A] rounded-xl p-4 hover:bg-[#1A1A25] transition-colors">
-                    <span className="text-xs px-2.5 py-1 rounded-full bg-green-500/10 text-green-400 font-semibold">✅ Decision Made</span>
-                    <h4 className="text-sm font-semibold mt-2 mb-1 text-[#E8E8ED]">New Vendor Selection</h4>
-                    <p className="text-xs text-[#8888A0] mb-2">Team agreed on Vendor B in yesterday's Teams call. Contract details shared via WhatsApp by Mike.</p>
-                    <div className="flex gap-2 text-xs text-[#8888A0]/60">
-                      <span>🟣 Teams Call</span>
-                      <span>🟢 WhatsApp</span>
+                  {/* Content area */}
+                  <div className="flex-1 p-4 space-y-3">
+                    {/* Action Required card */}
+                    <div className="bg-drift-card border border-drift-border rounded-xl p-4 hover:border-drift-primary/30 transition-colors">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-xs px-2 py-0.5 rounded-lg bg-drift-danger/15 text-drift-danger font-medium">Action Required</span>
+                        <span className="ml-auto text-[10px] text-drift-muted">2h ago</span>
+                      </div>
+                      <h4 className="text-sm font-semibold mb-1 text-drift-text">Q1 Budget Approval</h4>
+                      <p className="text-xs text-drift-muted mb-2.5 leading-relaxed">Sarah mentioned in Slack that the CFO needs your sign-off by Friday. Related email from finance@company.com.</p>
+                      <div className="flex gap-2">
+                        <span className="text-[10px] px-2 py-0.5 rounded-lg bg-[#EA4335]/15 text-[#EA4335] font-medium">Gmail</span>
+                        <span className="text-[10px] px-2 py-0.5 rounded-lg bg-[#6264A7]/15 text-[#6264A7] font-medium">Slack</span>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="bg-[#1A1A25]/50 border border-[#2A2A3A] rounded-xl p-4 hover:bg-[#1A1A25] transition-colors">
-                    <span className="text-xs px-2.5 py-1 rounded-full bg-yellow-500/10 text-yellow-400 font-semibold">⏰ Follow Up</span>
-                    <h4 className="text-sm font-semibold mt-2 mb-1 text-[#E8E8ED]">Client Proposal Response</h4>
-                    <p className="text-xs text-[#8888A0] mb-2">Acme Corp hasn't replied in 3 days. Last touchpoint was your email on Monday. Consider a follow-up.</p>
-                    <div className="flex gap-2 text-xs text-[#8888A0]/60">
-                      <span>📧 Email</span>
+                    {/* Decision Made card */}
+                    <div className="bg-drift-card border border-drift-border rounded-xl p-4 hover:border-drift-primary/30 transition-colors">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-xs px-2 py-0.5 rounded-lg bg-drift-success/15 text-drift-success font-medium">Decision Made</span>
+                        <span className="ml-auto text-[10px] text-drift-muted">Yesterday</span>
+                      </div>
+                      <h4 className="text-sm font-semibold mb-1 text-drift-text">New Vendor Selection</h4>
+                      <p className="text-xs text-drift-muted mb-2.5 leading-relaxed">Team agreed on Vendor B in yesterday&apos;s Teams call. Contract details shared via WhatsApp by Mike.</p>
+                      <div className="flex gap-2">
+                        <span className="text-[10px] px-2 py-0.5 rounded-lg bg-[#6264A7]/15 text-[#6264A7] font-medium">Teams</span>
+                        <span className="text-[10px] px-2 py-0.5 rounded-lg bg-[#25D366]/15 text-[#25D366] font-medium">WhatsApp</span>
+                      </div>
+                    </div>
+
+                    {/* Follow Up card */}
+                    <div className="bg-drift-card border border-drift-border rounded-xl p-4 hover:border-drift-primary/30 transition-colors">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-xs px-2 py-0.5 rounded-lg bg-drift-warning/15 text-drift-warning font-medium">Follow Up</span>
+                        <span className="ml-auto text-[10px] text-drift-muted">3 days</span>
+                      </div>
+                      <h4 className="text-sm font-semibold mb-1 text-drift-text">Client Proposal Response</h4>
+                      <p className="text-xs text-drift-muted mb-2.5 leading-relaxed">Acme Corp hasn&apos;t replied in 3 days. Last touchpoint was your email on Monday. Consider a follow-up.</p>
+                      <div className="flex gap-2">
+                        <span className="text-[10px] px-2 py-0.5 rounded-lg bg-[#EA4335]/15 text-[#EA4335] font-medium">Gmail</span>
+                      </div>
                     </div>
                   </div>
                 </div>
