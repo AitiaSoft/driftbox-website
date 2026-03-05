@@ -123,9 +123,11 @@ export async function POST(request: NextRequest) {
 
     if (!response.ok) {
       const errorData = await response.text()
-      console.error('Supabase error:', errorData)
-      
-      if (response.status === 409) {
+      console.error('Supabase error:', response.status, errorData)
+
+      // Supabase returns 409 for unique constraint violations,
+      // but may also return 400/409 with a JSON body containing code "23505"
+      if (response.status === 409 || errorData.includes('23505') || errorData.includes('duplicate')) {
         return NextResponse.json(
           { error: 'This email is already on the waitlist' },
           { status: 409 }
@@ -197,9 +199,10 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     )
   } catch (error) {
-    console.error('Error processing waitlist signup:', error)
+    const message = error instanceof Error ? error.message : String(error)
+    console.error('Error processing waitlist signup:', message, error)
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Internal server error', detail: message },
       { status: 500 }
     )
   }
