@@ -133,7 +133,7 @@ export async function POST(request: NextRequest) {
       }
 
       return NextResponse.json(
-        { error: 'Failed to add to waitlist' },
+        { error: 'Failed to add to waitlist', detail: `Supabase ${response.status}: ${errorData}` },
         { status: 500 }
       )
     }
