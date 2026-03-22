@@ -56,10 +56,24 @@ export default function FinalCTA() {
           </ScrollReveal>
 
           <ScrollReveal delay={100}>
-            <p className="text-xl text-drift-muted mb-12">
+            <p className="text-xl text-drift-muted mb-8">
               Join the waitlist and get early access when we launch.
-              <span className="block mt-2 text-drift-primary font-semibold">Free during beta. No credit card required.</span>
             </p>
+            <div className="flex flex-col items-center gap-3 mb-8">
+              <div className="flex items-center gap-2 text-sm text-drift-muted">
+                <svg className="w-4 h-4 text-drift-success flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Early access + free forever during beta
+              </div>
+              <div className="flex items-center gap-2 text-sm text-drift-muted">
+                <svg className="w-4 h-4 text-drift-success flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Direct access to the team
+              </div>
+              <div className="flex items-center gap-2 text-sm text-drift-muted">
+                <svg className="w-4 h-4 text-drift-success flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Shape the product
+              </div>
+            </div>
+            <p className="text-sm text-drift-muted/70 mb-6">Built for teams who value their time.</p>
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
@@ -87,7 +101,7 @@ export default function FinalCTA() {
                       : 'bg-drift-primary text-white shadow-drift-primary/25 hover:bg-drift-primary-hover hover:shadow-drift-primary/40'
                   } disabled:opacity-50 disabled:cursor-not-allowed`}
                 >
-                  {status === 'loading' ? 'Joining...' : status === 'success' ? 'Done!' : status === 'error' ? 'Error' : 'Get Early Access'}
+                  {status === 'loading' ? 'Joining...' : status === 'success' ? 'You\'re In!' : status === 'error' ? 'Error' : 'Join the Waitlist — It\'s Free'}
                 </button>
               </div>
             </form>

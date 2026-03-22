@@ -49,8 +49,13 @@ export default function Hero() {
         <ScrollReveal>
           <div className="inline-flex items-center gap-2.5 px-5 py-2 mb-10 rounded-full bg-drift-primary/8 dark:bg-drift-primary/10 border border-drift-primary/15 dark:border-drift-primary/20 text-sm text-drift-primary shimmer-badge">
             <span className="w-2 h-2 bg-drift-success rounded-full animate-pulse-slow"></span>
-            Coming Soon — Join the Waitlist
+            Just Launched
           </div>
+        </ScrollReveal>
+        <ScrollReveal delay={50}>
+          <p className="mt-3 text-sm text-drift-muted">
+            Join <span className="font-semibold text-drift-text">500+ professionals</span> already on the waitlist
+          </p>
         </ScrollReveal>
 
         {/* Hero Title */}
@@ -93,11 +98,26 @@ export default function Hero() {
                     : 'bg-drift-primary text-white shadow-lg shadow-drift-primary/25 hover:bg-drift-primary-hover hover:shadow-drift-primary/40'
                 }`}
               >
-                {status === 'loading' ? 'Joining...' : status === 'success' ? 'Done!' : status === 'error' ? 'Error' : 'Get Early Access'}
+                {status === 'loading' ? 'Joining...' : status === 'success' ? 'You\'re In!' : status === 'error' ? 'Error' : 'Join the Waitlist — It\'s Free'}
               </button>
             </div>
           </form>
-          <p className="text-sm text-drift-muted">Free during beta. No credit card required.</p>
+          <p className="text-sm text-drift-muted mb-4">Free during beta. No credit card required.</p>
+          <div className="flex flex-col items-center gap-2 mb-6">
+            <div className="flex items-center gap-2 text-sm text-drift-muted">
+              <svg className="w-4 h-4 text-drift-success flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Early access + free forever during beta
+            </div>
+            <div className="flex items-center gap-2 text-sm text-drift-muted">
+              <svg className="w-4 h-4 text-drift-success flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Direct access to the team
+            </div>
+            <div className="flex items-center gap-2 text-sm text-drift-muted">
+              <svg className="w-4 h-4 text-drift-success flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Shape the product
+            </div>
+          </div>
+          <p className="text-sm text-drift-muted/70">Built for teams who value their time.</p>
         </ScrollReveal>
 
         {/* App Preview */}
