@@ -52,6 +52,11 @@ export default function Hero() {
             Just Launched
           </div>
         </ScrollReveal>
+        <ScrollReveal delay={50}>
+          <p className="mt-3 text-sm text-drift-muted">
+            Join <span className="font-semibold text-drift-text">500+ professionals</span> already on the waitlist
+          </p>
+        </ScrollReveal>
 
         {/* Hero Title */}
         <ScrollReveal delay={100}>
