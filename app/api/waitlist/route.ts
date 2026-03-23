@@ -205,3 +205,4 @@ export async function POST(request: NextRequest) {
     )
   }
 }
+// env vars updated: driftbox supabase project fixed 2026-03-23
