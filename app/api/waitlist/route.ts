@@ -60,7 +60,7 @@ async function sendEmailNotification(signupEmail: string, totalCount: string, si
               <p><strong>Signed up:</strong> ${formattedTimestamp} EST</p>
               <p><strong>Total waitlist:</strong> ${totalCount}</p>
               <br>
-              <p><a href="https://supabase.com/dashboard/project/ubiadvbpaviaocxhqflc/editor">View all signups in Supabase →</a></p>
+              <p><a href="https://supabase.com/dashboard/project/gssagxlpnznvffgmsmpa/editor">View all signups in Supabase →</a></p>
             `
           },
           toRecipients: [
