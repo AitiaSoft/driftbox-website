@@ -64,7 +64,7 @@ export default function Hero() {
         {/* Hero Title */}
         <ScrollReveal delay={100}>
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-8 text-drift-text">
-            Your team made 47 decisions last week.<br />
+            You were part of 47 decisions last week.<br />
             <span className="gradient-text">How many slipped through?</span>
           </h1>
         </ScrollReveal>
