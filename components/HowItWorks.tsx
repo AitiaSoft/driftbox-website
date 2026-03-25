@@ -4,8 +4,8 @@ export default function HowItWorks() {
   const steps = [
     {
       number: '01',
-      title: 'Connect Your Channels',
-      description: 'Link your email, Slack, Teams, and WhatsApp in seconds. DriftBox works with your existing tools — no change in workflow required.',
+      title: 'Connect in 60 Seconds',
+      description: 'Link your email, Slack, Teams, and WhatsApp — no workflow changes required. DriftBox works alongside your existing tools.',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -14,8 +14,8 @@ export default function HowItWorks() {
     },
     {
       number: '02',
-      title: 'AI Captures Everything',
-      description: 'Our AI reads every message, understands context, and identifies what\'s important — decisions, action items, commitments, and insights.',
+      title: 'AI Understands Context',
+      description: 'Our AI doesn\'t just read messages — it understands decisions, commitments, and follow-ups across every conversation and platform.',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -24,8 +24,8 @@ export default function HowItWorks() {
     },
     {
       number: '03',
-      title: 'Get Instant Insights',
-      description: 'Ask questions in plain English. "What did Sarah decide about the Q2 budget?" DriftBox knows — and gives you the answer with source links.',
+      title: 'Ask. Get Answers. Act.',
+      description: '"What did Sarah decide about the Q2 budget?" DriftBox knows — and gives you the answer with source links, instantly.',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

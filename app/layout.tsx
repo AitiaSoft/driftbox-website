@@ -16,7 +16,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'DriftBox — Never Let a Conversation Drift Away',
   description: 'DriftBox captures every conversation across email, Slack, Teams, and WhatsApp — then surfaces what matters. AI-powered communication intelligence for busy professionals.',
-  keywords: ['communication', 'AI', 'productivity', 'email', 'slack', 'teams', 'whatsapp'],
+  keywords: ['communication', 'AI', 'productivity', 'email', 'slack', 'teams', 'whatsapp', 'communication intelligence', 'unified inbox', 'team communication', 'AI summaries', 'action tracking', 'decision tracking'],
   authors: [{ name: 'AitiaSoft' }],
   openGraph: {
     title: 'DriftBox — Never Let a Conversation Drift Away',
@@ -61,7 +61,7 @@ const jsonLd = {
       name: 'AitiaSoft',
     },
   ],
-  sameAs: [],
+  sameAs: ['https://x.com/rvaldezv'],
 }
 
 export default function RootLayout({

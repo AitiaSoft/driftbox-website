@@ -26,7 +26,7 @@ async function getGraphToken() {
   return tokenData.access_token
 }
 
-async function sendEmailNotification(signupEmail: string, totalCount: string, signupTimestamp: string) {
+async function sendEmailNotification(signupEmail: string, totalCount: string, signupTimestamp: string, tier: string | null, utmSource: string | null = null) {
   const token = await getGraphToken()
   if (!token) {
     console.error('Could not get Graph API token for email notification')
@@ -51,16 +51,17 @@ async function sendEmailNotification(signupEmail: string, totalCount: string, si
       },
       body: JSON.stringify({
         message: {
-          subject: '🎉 New DriftBox Waitlist Signup',
+          subject: `🎉 New DriftBox ${tier ? tier.charAt(0).toUpperCase() + tier.slice(1) + ' Tier' : 'Waitlist'} Signup`,
           body: {
             contentType: 'HTML',
             content: `
               <h3>New DriftBox Waitlist Signup!</h3>
               <p><strong>Email:</strong> ${signupEmail}</p>
+              ${tier ? '<p><strong>Tier:</strong> ' + tier + '</p>' : ''}${utmSource ? '<p><strong>Source:</strong> ' + utmSource + '</p>' : ''}
               <p><strong>Signed up:</strong> ${formattedTimestamp} EST</p>
               <p><strong>Total waitlist:</strong> ${totalCount}</p>
               <br>
-              <p><a href="https://supabase.com/dashboard/project/gssagxlpnznvffgmsmpa/editor">View all signups in Supabase →</a></p>
+              <p><a href="https://supabase.com/dashboard/project/rcxigrjcsiwzrnznasfg/editor">View all signups in Supabase →</a></p>
             `
           },
           toRecipients: [
@@ -83,7 +84,15 @@ async function sendEmailNotification(signupEmail: string, totalCount: string, si
 
 export async function POST(request: NextRequest) {
   try {
-    const { email } = await request.json()
+    const body = await request.json()
+    const email = body.email
+    const tier = body.tier || null
+    const signupSource = body.source || 'website'
+    const utmSource = body.utm_source || null
+    const utmMedium = body.utm_medium || null
+    const utmCampaign = body.utm_campaign || null
+    const utmContent = body.utm_content || null
+    const referrer = body.referrer || null
 
     // Validate email
     if (!email || !email.includes('@')) {
@@ -106,31 +115,33 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Insert into Supabase waitlist table
-    const response = await fetch(`${supabaseUrl}/rest/v1/waitlist`, {
+    // Build insert payload dynamically (only non-null fields)
+    const insertPayload: Record<string, string> = {
+      email: email.toLowerCase().trim(),
+      source: signupSource,
+    }
+    if (tier) insertPayload.tier = tier
+    if (utmSource) insertPayload.utm_source = utmSource
+    if (utmMedium) insertPayload.utm_medium = utmMedium
+    if (utmCampaign) insertPayload.utm_campaign = utmCampaign
+    if (utmContent) insertPayload.utm_content = utmContent
+    if (referrer) insertPayload.referrer = referrer
+
+    // Upsert into Supabase waitlist table
+    const response = await fetch(`${supabaseUrl}/rest/v1/waitlist?on_conflict=email`, {
       method: 'POST',
       headers: {
         'apikey': supabaseKey,
         'Authorization': `Bearer ${supabaseKey}`,
         'Content-Type': 'application/json',
-        'Prefer': 'return=representation'
+        'Prefer': 'return=representation,resolution=merge-duplicates'
       },
-      body: JSON.stringify({
-        email: email.toLowerCase().trim(),
-        source: 'website'
-      })
+      body: JSON.stringify(insertPayload)
     })
 
     if (!response.ok) {
       const errorData = await response.text()
       console.error('Supabase error:', response.status, errorData)
-
-      if (response.status === 409 || errorData.includes('23505') || errorData.includes('duplicate')) {
-        return NextResponse.json(
-          { error: 'This email is already on the waitlist' },
-          { status: 409 }
-        )
-      }
 
       return NextResponse.json(
         { error: 'Failed to add to waitlist', detail: `Supabase ${response.status}: ${errorData}` },
@@ -174,12 +185,12 @@ export async function POST(request: NextRequest) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               chat_id: '8559715114',
-              text: `🎉 New DriftBox waitlist signup!\n\nEmail: ${cleanEmail}\nTotal signups: ${totalCount}`
+              text: `🎉 New DriftBox waitlist signup!\n\nEmail: ${cleanEmail}${tier ? `\nTier: ${tier}` : ''}${utmSource ? `\nSource: ${utmSource}` : ''}\nTotal signups: ${totalCount}`
             })
           })
         : Promise.resolve(null),
       // Email notification
-      sendEmailNotification(cleanEmail, totalCount, signupTimestamp)
+      sendEmailNotification(cleanEmail, totalCount, signupTimestamp, tier, utmSource)
     ])
 
     // Log notification results for debugging
@@ -205,4 +216,4 @@ export async function POST(request: NextRequest) {
     )
   }
 }
-// env vars updated: driftbox supabase project fixed 2026-03-23
+// env vars updated: moved to dedicated driftbox-waitlist supabase project 2026-03-25

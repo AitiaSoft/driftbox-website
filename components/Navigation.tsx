@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import ThemeToggle from './ThemeToggle'
+import { trackEvent } from '@/lib/analytics'
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -29,6 +30,9 @@ export default function Navigation() {
             <Link href="/#how-it-works" className="text-sm text-drift-muted hover:text-drift-text transition-colors">
               How It Works
             </Link>
+            <Link href="/#who-its-for" className="text-sm text-drift-muted hover:text-drift-text transition-colors">
+              Who It&apos;s For
+            </Link>
             <Link href="/blog" className="text-sm text-drift-muted hover:text-drift-text transition-colors">
               Blog
             </Link>
@@ -38,9 +42,10 @@ export default function Navigation() {
             <ThemeToggle />
             <Link
               href="/#waitlist"
+              onClick={() => trackEvent('nav_cta_click', { location: 'desktop' })}
               className="px-5 py-2 text-sm font-semibold rounded-xl bg-drift-primary text-white shadow-md shadow-drift-primary/20 hover:bg-drift-primary-hover hover:shadow-drift-primary/30 transition-all"
             >
-              Join Waitlist
+              Get Early Access
             </Link>
           </div>
 
@@ -61,13 +66,14 @@ export default function Navigation() {
           <div className="md:hidden py-6 space-y-4">
             <Link href="/#features" className="block text-drift-muted hover:text-drift-text">Features</Link>
             <Link href="/#how-it-works" className="block text-drift-muted hover:text-drift-text">How It Works</Link>
+            <Link href="/#who-its-for" className="block text-drift-muted hover:text-drift-text">Who It&apos;s For</Link>
             <Link href="/blog" className="block text-drift-muted hover:text-drift-text">Blog</Link>
             <Link href="/#pricing" className="block text-drift-muted hover:text-drift-text">Pricing</Link>
             <div className="pt-2">
               <ThemeToggle />
             </div>
-            <Link href="/#waitlist" className="block px-5 py-2.5 text-sm font-semibold rounded-xl bg-drift-primary text-white text-center shadow-md shadow-drift-primary/20">
-              Join Waitlist
+            <Link href="/#waitlist" onClick={() => trackEvent('nav_cta_click', { location: 'mobile' })} className="block px-5 py-2.5 text-sm font-semibold rounded-xl bg-drift-primary text-white text-center shadow-md shadow-drift-primary/20">
+              Get Early Access
             </Link>
           </div>
         )}
