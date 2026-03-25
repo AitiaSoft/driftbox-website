@@ -104,8 +104,7 @@ export default function Hero() {
               </button>
             </div>
           </form>
-          <p className="text-sm text-drift-muted mb-4">Free during beta. No credit card required.</p>
-          <div className="flex flex-col items-center gap-2 mb-6">
+          <div className="flex flex-col items-center gap-2 mb-6 mt-4">
             <div className="flex items-center gap-2 text-sm text-drift-muted">
               <svg className="w-4 h-4 text-drift-success flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
               Free during early access. No credit card ever.
