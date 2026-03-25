@@ -61,7 +61,7 @@ async function sendEmailNotification(signupEmail: string, totalCount: string, si
               <p><strong>Signed up:</strong> ${formattedTimestamp} EST</p>
               <p><strong>Total waitlist:</strong> ${totalCount}</p>
               <br>
-              <p><a href="https://supabase.com/dashboard/project/gssagxlpnznvffgmsmpa/editor">View all signups in Supabase →</a></p>
+              <p><a href="https://supabase.com/dashboard/project/rcxigrjcsiwzrnznasfg/editor">View all signups in Supabase →</a></p>
             `
           },
           toRecipients: [
@@ -216,4 +216,4 @@ export async function POST(request: NextRequest) {
     )
   }
 }
-// env vars updated: driftbox supabase project fixed 2026-03-23
+// env vars updated: moved to dedicated driftbox-waitlist supabase project 2026-03-25
