@@ -59,9 +59,9 @@ export default function SocialProof() {
       <div className="absolute inset-0 bg-drift-surface/30 -z-10" />
       <div className="max-w-4xl mx-auto text-center">
         <ScrollReveal>
-          <p className="text-sm font-semibold uppercase tracking-wider text-drift-muted mb-6">
-            Works with the tools you already use
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-drift-text">
+            Works with the tools <span className="gradient-text">you already use</span>
+          </h2>
           <div className="flex flex-wrap justify-center gap-4 mb-10">
             {platforms.map((platform) => (
               <div
