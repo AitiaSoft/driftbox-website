@@ -65,15 +65,14 @@ export default function Hero() {
         <ScrollReveal delay={100}>
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-8 text-drift-text">
             Your team made 47 decisions last week.<br />
-            <span className="gradient-text">How many did you actually capture?</span>
+            <span className="gradient-text">How many slipped through?</span>
           </h1>
         </ScrollReveal>
 
         {/* Subtitle */}
         <ScrollReveal delay={200}>
           <p className="text-lg md:text-xl text-drift-muted max-w-2xl mx-auto mb-12 leading-relaxed">
-            Teams lose decisions, deadlines, and follow-ups across email, Slack, Teams, and WhatsApp every day.
-            DriftBox uses AI to make sure nothing important drifts away.
+            DriftBox captures decisions, deadlines, and follow-ups across email, Slack, Teams, and WhatsApp — so nothing drifts away.
           </p>
         </ScrollReveal>
 
