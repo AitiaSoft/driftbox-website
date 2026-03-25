@@ -8,7 +8,7 @@ const features = [
       </svg>
     ),
     title: 'Unified Inbox',
-    description: 'Email, Slack, Teams, WhatsApp — all in one view. No more app-switching. No more lost threads.',
+    description: 'Never again say "I think that was in Slack... or was it email?" Every conversation, every platform, one search away.',
     accent: {
       iconBg: 'bg-sky-500/10 dark:bg-sky-500/15',
       iconText: 'text-sky-600 dark:text-sky-400',
@@ -23,7 +23,7 @@ const features = [
       </svg>
     ),
     title: 'AI Summaries',
-    description: 'Get the gist of any conversation in seconds. Daily digests, meeting recaps, and thread summaries — automatically.',
+    description: 'Walk into any meeting fully briefed. Daily digests tell you what happened, what was decided, and what needs your attention.',
     accent: {
       iconBg: 'bg-violet-500/10 dark:bg-violet-500/15',
       iconText: 'text-violet-600 dark:text-violet-400',
@@ -38,7 +38,7 @@ const features = [
       </svg>
     ),
     title: 'Action Detection',
-    description: 'DriftBox spots decisions, deadlines, and action items buried in your messages — and makes sure you follow through.',
+    description: 'Your teammate said "I\'ll send the proposal by Friday." DriftBox remembers so you don\'t have to chase. Zero follow-ups fall through.',
     accent: {
       iconBg: 'bg-emerald-500/10 dark:bg-emerald-500/15',
       iconText: 'text-emerald-600 dark:text-emerald-400',
@@ -53,7 +53,7 @@ const features = [
       </svg>
     ),
     title: 'Smart Search',
-    description: '"What did Sarah say about the budget last week?" — search across all platforms with natural language.',
+    description: 'Ask "What did the client say about the Q2 timeline?" and get the answer in seconds — across email, Slack, and Teams simultaneously.',
     accent: {
       iconBg: 'bg-amber-500/10 dark:bg-amber-500/15',
       iconText: 'text-amber-600 dark:text-amber-400',
@@ -68,7 +68,7 @@ const features = [
       </svg>
     ),
     title: 'Smart Alerts',
-    description: 'Get notified only when it matters. DriftBox learns your priorities and filters the noise.',
+    description: 'Stop drowning in notifications. Get alerted only when a decision needs you, a deadline approaches, or a commitment is at risk.',
     accent: {
       iconBg: 'bg-rose-500/10 dark:bg-rose-500/15',
       iconText: 'text-rose-600 dark:text-rose-400',
@@ -83,7 +83,7 @@ const features = [
       </svg>
     ),
     title: 'Enterprise Security',
-    description: 'End-to-end encryption. SOC 2 compliant. Your conversations stay yours — always.',
+    description: 'Your conversations stay yours. End-to-end encryption, SOC 2 compliance, and full GDPR controls — because trust isn\'t optional.',
     accent: {
       iconBg: 'bg-cyan-500/10 dark:bg-cyan-500/15',
       iconText: 'text-cyan-600 dark:text-cyan-400',
@@ -100,7 +100,7 @@ export default function Features() {
         <ScrollReveal>
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-drift-text">
-              Everything you need to <span className="gradient-text">never miss a thing</span>
+              What changes when <span className="gradient-text">nothing drifts away</span>
             </h2>
             <p className="text-lg text-drift-muted max-w-xl mx-auto">DriftBox doesn't just aggregate messages. It understands them.</p>
           </div>

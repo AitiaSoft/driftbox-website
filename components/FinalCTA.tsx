@@ -1,11 +1,17 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
+import { FormEvent, useState, useEffect } from 'react'
 import ScrollReveal from './ScrollReveal'
+import { trackEvent } from '@/lib/analytics'
+import { captureUtmParams, getUtmParams } from '@/lib/utm'
 
 export default function FinalCTA() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  useEffect(() => {
+    captureUtmParams()
+  }, [])
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -17,12 +23,13 @@ export default function FinalCTA() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email })
+        body: JSON.stringify({ email, source: 'final-cta', ...getUtmParams() })
       })
 
       if (response.ok) {
         setStatus('success')
         setEmail('')
+        trackEvent('waitlist_signup', { source: 'final-cta', ...getUtmParams() })
         setTimeout(() => setStatus('idle'), 3000)
       } else {
         const errorData = await response.json()
@@ -39,7 +46,7 @@ export default function FinalCTA() {
 
   return (
     <section id="waitlist" className="py-28 relative overflow-hidden">
-      {/* Atmospheric background — kept for CTA impact */}
+      {/* Atmospheric background */}
       <div className="absolute inset-0 bg-drift-surface/50 -z-10" />
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-drift-primary/5 dark:bg-drift-primary/8 rounded-full blur-[120px] -z-10" />
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-drift-secondary/5 dark:bg-drift-secondary/8 rounded-full blur-[100px] -z-10" />
@@ -51,29 +58,28 @@ export default function FinalCTA() {
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
             <h2 className="text-4xl md:text-6xl font-bold mb-6 text-drift-text">
-              Ready to Stop <span className="gradient-text">Losing Conversations?</span>
+              Every day you wait, another <span className="gradient-text">decision drifts away.</span>
             </h2>
           </ScrollReveal>
 
           <ScrollReveal delay={100}>
             <p className="text-xl text-drift-muted mb-8">
-              Join the waitlist and get early access when we launch.
+              Be among the first to experience AI-powered communication intelligence.
             </p>
             <div className="flex flex-col items-center gap-3 mb-8">
               <div className="flex items-center gap-2 text-sm text-drift-muted">
                 <svg className="w-4 h-4 text-drift-success flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-                Early access + free forever during beta
+                Free during early access. No credit card ever.
               </div>
               <div className="flex items-center gap-2 text-sm text-drift-muted">
                 <svg className="w-4 h-4 text-drift-success flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-                Direct access to the team
+                Direct access to the founder
               </div>
               <div className="flex items-center gap-2 text-sm text-drift-muted">
                 <svg className="w-4 h-4 text-drift-success flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-                Shape the product
+                We&apos;ll never share your email
               </div>
             </div>
-            <p className="text-sm text-drift-muted/70 mb-6">Built for teams who value their time.</p>
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
@@ -101,7 +107,7 @@ export default function FinalCTA() {
                       : 'bg-drift-primary text-white shadow-drift-primary/25 hover:bg-drift-primary-hover hover:shadow-drift-primary/40'
                   } disabled:opacity-50 disabled:cursor-not-allowed`}
                 >
-                  {status === 'loading' ? 'Joining...' : status === 'success' ? 'You\'re In!' : status === 'error' ? 'Error' : 'Join the Waitlist — It\'s Free'}
+                  {status === 'loading' ? 'Joining...' : status === 'success' ? 'You\'re In!' : status === 'error' ? 'Error' : 'Get Early Access'}
                 </button>
               </div>
             </form>
@@ -109,7 +115,7 @@ export default function FinalCTA() {
 
           <ScrollReveal delay={300}>
             <p className="mt-8 text-sm text-drift-muted">
-              Be among the first to experience DriftBox.
+              No credit card required. Cancel anytime.
             </p>
           </ScrollReveal>
         </div>

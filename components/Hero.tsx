@@ -1,15 +1,22 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ScrollReveal from './ScrollReveal'
+import { trackEvent } from '@/lib/analytics'
+import { captureUtmParams, getUtmParams } from '@/lib/utm'
 
 export default function Hero() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
+  useEffect(() => {
+    captureUtmParams()
+  }, [])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('loading')
+    trackEvent('hero_cta_click', { cta_text: 'Get Early Access' })
 
     try {
       const response = await fetch('/api/waitlist', {
@@ -17,12 +24,13 @@ export default function Hero() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email })
+        body: JSON.stringify({ email, source: 'hero', ...getUtmParams() })
       })
 
       if (response.ok) {
         setStatus('success')
         setEmail('')
+        trackEvent('waitlist_signup', { source: 'hero', ...getUtmParams() })
         setTimeout(() => setStatus('idle'), 3000)
       } else {
         const errorData = await response.json()
@@ -39,7 +47,7 @@ export default function Hero() {
 
   return (
     <section className="relative pt-36 pb-24 px-6 text-center overflow-hidden">
-      {/* Atmospheric gradient orbs — kept for hero marketing impact */}
+      {/* Atmospheric gradient orbs */}
       <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-drift-primary/8 dark:bg-drift-primary/10 rounded-full blur-[120px] -z-10" />
       <div className="absolute top-[10%] left-[15%] w-[400px] h-[400px] bg-drift-secondary/5 dark:bg-drift-secondary/8 rounded-full blur-[100px] -z-10" />
       <div className="absolute top-[5%] right-[10%] w-[350px] h-[350px] bg-drift-accent/5 dark:bg-drift-accent/6 rounded-full blur-[100px] -z-10 animate-glow-pulse" />
@@ -49,24 +57,23 @@ export default function Hero() {
         <ScrollReveal>
           <div className="inline-flex items-center gap-2.5 px-5 py-2 mb-10 rounded-full bg-drift-primary/8 dark:bg-drift-primary/10 border border-drift-primary/15 dark:border-drift-primary/20 text-sm text-drift-primary shimmer-badge">
             <span className="w-2 h-2 bg-drift-success rounded-full animate-pulse-slow"></span>
-            Just Launched
+            Early Access — Limited Spots
           </div>
         </ScrollReveal>
 
         {/* Hero Title */}
         <ScrollReveal delay={100}>
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-8 text-drift-text">
-            Your conversations are everywhere.<br />
-            <span className="gradient-text">Your insights shouldn't be.</span>
+            Your team made 47 decisions last week.<br />
+            <span className="gradient-text">How many did you actually capture?</span>
           </h1>
         </ScrollReveal>
 
         {/* Subtitle */}
         <ScrollReveal delay={200}>
           <p className="text-lg md:text-xl text-drift-muted max-w-2xl mx-auto mb-12 leading-relaxed">
-            DriftBox captures every conversation across email, Slack, Teams, and WhatsApp —
-            then surfaces what matters. Stop losing decisions in message threads.
-            Start knowing everything, effortlessly.
+            Teams lose decisions, deadlines, and follow-ups across email, Slack, Teams, and WhatsApp every day.
+            DriftBox uses AI to make sure nothing important drifts away.
           </p>
         </ScrollReveal>
 
@@ -93,7 +100,7 @@ export default function Hero() {
                     : 'bg-drift-primary text-white shadow-lg shadow-drift-primary/25 hover:bg-drift-primary-hover hover:shadow-drift-primary/40'
                 }`}
               >
-                {status === 'loading' ? 'Joining...' : status === 'success' ? 'You\'re In!' : status === 'error' ? 'Error' : 'Join the Waitlist — It\'s Free'}
+                {status === 'loading' ? 'Joining...' : status === 'success' ? 'You\'re In!' : status === 'error' ? 'Error' : 'Get Early Access'}
               </button>
             </div>
           </form>
@@ -101,18 +108,18 @@ export default function Hero() {
           <div className="flex flex-col items-center gap-2 mb-6">
             <div className="flex items-center gap-2 text-sm text-drift-muted">
               <svg className="w-4 h-4 text-drift-success flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-              Early access + free forever during beta
+              Free during early access. No credit card ever.
             </div>
             <div className="flex items-center gap-2 text-sm text-drift-muted">
               <svg className="w-4 h-4 text-drift-success flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-              Direct access to the team
+              Direct access to the founder
             </div>
             <div className="flex items-center gap-2 text-sm text-drift-muted">
               <svg className="w-4 h-4 text-drift-success flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-              Shape the product
+              Shape the product with your feedback
             </div>
           </div>
-          <p className="text-sm text-drift-muted/70">Built for teams who value their time.</p>
+          <p className="text-sm text-drift-muted/70">Built for teams juggling 3+ communication tools.</p>
         </ScrollReveal>
 
         {/* App Preview */}
@@ -134,9 +141,8 @@ export default function Hero() {
 
               {/* App Content */}
               <div className="flex">
-                {/* Sidebar — matches real app nav structure */}
+                {/* Sidebar */}
                 <div className="w-52 py-4 border-r border-drift-border hidden md:flex flex-col bg-drift-surface">
-                  {/* Logo */}
                   <div className="px-5 mb-5">
                     <div className="flex items-center gap-2">
                       <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 40 40" fill="none">
@@ -150,10 +156,7 @@ export default function Hero() {
                       </div>
                     </div>
                   </div>
-
-                  {/* Nav sections */}
                   <div className="px-3 space-y-4 flex-1">
-                    {/* Overview */}
                     <div>
                       <span className="px-3 text-[10px] font-semibold uppercase tracking-wider text-drift-muted/60">Overview</span>
                       <div className="mt-1.5 space-y-0.5">
@@ -167,8 +170,6 @@ export default function Hero() {
                         </div>
                       </div>
                     </div>
-
-                    {/* Intelligence */}
                     <div>
                       <span className="px-3 text-[10px] font-semibold uppercase tracking-wider text-drift-muted/60">Intelligence</span>
                       <div className="mt-1.5 space-y-0.5">
@@ -183,8 +184,6 @@ export default function Hero() {
                         </div>
                       </div>
                     </div>
-
-                    {/* People */}
                     <div>
                       <span className="px-3 text-[10px] font-semibold uppercase tracking-wider text-drift-muted/60">People</span>
                       <div className="mt-1.5 space-y-0.5">
@@ -194,8 +193,6 @@ export default function Hero() {
                         </div>
                       </div>
                     </div>
-
-                    {/* Data Sources */}
                     <div>
                       <span className="px-3 text-[10px] font-semibold uppercase tracking-wider text-drift-muted/60">Data Sources</span>
                       <div className="mt-1.5 space-y-0.5">
@@ -207,8 +204,6 @@ export default function Hero() {
                       </div>
                     </div>
                   </div>
-
-                  {/* Bottom section */}
                   <div className="px-3 pt-3 mt-auto border-t border-drift-border">
                     <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-drift-muted text-sm">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
@@ -219,7 +214,6 @@ export default function Hero() {
 
                 {/* Main area */}
                 <div className="flex-1 flex flex-col min-h-0">
-                  {/* Top bar — matches real app */}
                   <div className="flex items-center justify-between px-5 py-3 border-b border-drift-border">
                     <span className="text-sm font-semibold text-drift-text">Dashboard</span>
                     <div className="flex items-center gap-3">
@@ -234,10 +228,7 @@ export default function Hero() {
                       </div>
                     </div>
                   </div>
-
-                  {/* Content area */}
                   <div className="flex-1 p-4 space-y-3">
-                    {/* Action Required card */}
                     <div className="bg-drift-card border border-drift-border rounded-xl p-4 hover:border-drift-primary/30 transition-colors">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-xs px-2 py-0.5 rounded-lg bg-drift-danger/15 text-drift-danger font-medium">Action Required</span>
@@ -250,8 +241,6 @@ export default function Hero() {
                         <span className="text-[10px] px-2 py-0.5 rounded-lg bg-[#6264A7]/15 text-[#6264A7] font-medium">Slack</span>
                       </div>
                     </div>
-
-                    {/* Decision Made card */}
                     <div className="bg-drift-card border border-drift-border rounded-xl p-4 hover:border-drift-primary/30 transition-colors">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-xs px-2 py-0.5 rounded-lg bg-drift-success/15 text-drift-success font-medium">Decision Made</span>
@@ -264,8 +253,6 @@ export default function Hero() {
                         <span className="text-[10px] px-2 py-0.5 rounded-lg bg-[#25D366]/15 text-[#25D366] font-medium">WhatsApp</span>
                       </div>
                     </div>
-
-                    {/* Follow Up card */}
                     <div className="bg-drift-card border border-drift-border rounded-xl p-4 hover:border-drift-primary/30 transition-colors">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-xs px-2 py-0.5 rounded-lg bg-drift-warning/15 text-drift-warning font-medium">Follow Up</span>

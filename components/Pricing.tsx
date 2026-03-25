@@ -1,12 +1,17 @@
+'use client'
+
+import Link from 'next/link'
 import ScrollReveal from './ScrollReveal'
+import { trackEvent } from '@/lib/analytics'
 
 export default function Pricing() {
   const plans = [
     {
       name: 'Free',
+      slug: 'free',
       price: '$0',
       period: '/month',
-      description: 'For individuals getting started',
+      description: 'See what you\'ve been missing',
       features: [
         '1 email + 1 WhatsApp (manual export)',
         '5 AI summaries per week',
@@ -15,41 +20,43 @@ export default function Pricing() {
         '30-day history',
         'Community support',
       ],
-      cta: 'Join Waitlist',
+      cta: 'Start Free',
       highlighted: false,
     },
     {
-      name: 'Starter',
-      price: '$19',
-      period: '/month',
-      description: 'For professionals juggling multiple channels',
+      name: 'Team',
+      slug: 'team',
+      price: '$29',
+      period: '/mo per user',
+      description: 'For teams that can\'t afford to miss anything',
       features: [
-        '3 emails + 1 Teams + 1 WhatsApp Business',
-        '50 AI summaries per week',
+        'Unlimited emails, Teams & WhatsApp',
+        '100 AI summaries per week',
         'AI search + commitment tracking',
         'Per-person timelines',
         'Custom alerts & reminders',
         '6-month history',
         'Email support',
       ],
-      cta: 'Join Waitlist',
+      cta: 'Start Free Trial',
       highlighted: true,
     },
     {
-      name: 'Pro',
-      price: '$49',
-      period: '/month',
-      description: 'For power users and teams who need it all',
+      name: 'Business',
+      slug: 'business',
+      price: '$79',
+      period: '/mo per user',
+      description: 'For organizations that run on communication',
       features: [
-        'Unlimited emails, Teams & WhatsApp',
+        'Everything in Team, unlimited',
         'Unlimited AI summaries + priority processing',
-        'AI search + commitment tracking',
         'Export, reporting & audit logs',
         'GDPR compliance & security controls',
+        'SSO & advanced integrations',
         '2-year history',
         'Priority support',
       ],
-      cta: 'Join Waitlist',
+      cta: 'Start Free Trial',
       highlighted: false,
     },
   ]
@@ -62,8 +69,11 @@ export default function Pricing() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-drift-text">
               Simple, <span className="gradient-text">Transparent</span> Pricing
             </h2>
-            <p className="text-xl text-drift-muted max-w-2xl mx-auto">
-              Choose the plan that fits your needs. Free during beta.
+            <p className="text-xl text-drift-muted max-w-2xl mx-auto mb-3">
+              Choose the plan that fits your needs.
+            </p>
+            <p className="text-sm text-drift-muted/70">
+              All plans include a 14-day free trial. Launching Q2 2026.
             </p>
           </div>
         </ScrollReveal>
@@ -107,8 +117,9 @@ export default function Pricing() {
                   ))}
                 </ul>
 
-                <a
-                  href="#waitlist"
+                <Link
+                  href={`/reserve/${plan.slug}`}
+                  onClick={() => trackEvent('pricing_tier_click', { tier_name: plan.slug, tier_price: plan.price })}
                   className={`block w-full py-3.5 px-6 rounded-xl text-center font-semibold transition-all duration-300 ${
                     plan.highlighted
                       ? 'bg-drift-primary text-white shadow-lg shadow-drift-primary/25 hover:bg-drift-primary-hover hover:shadow-drift-primary/40'
@@ -116,7 +127,7 @@ export default function Pricing() {
                   }`}
                 >
                   {plan.cta}
-                </a>
+                </Link>
               </div>
             </ScrollReveal>
           ))}
