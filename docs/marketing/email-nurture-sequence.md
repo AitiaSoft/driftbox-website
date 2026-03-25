@@ -117,7 +117,7 @@ P.S. — A few of you replied to my last email with your communication headaches
 
 ## Email 3: Communication Audit Template
 
-**Subject:** Free template: audit your team's communication in 15 minutes
+**Subject:** Free template: audit your communication workflow in 15 minutes
 **Send Timing:** Day 7
 **Goal:** Deliver pure value, build trust, position DriftBox as the authority on communication efficiency
 
@@ -127,25 +127,25 @@ Hey {first_name},
 
 No pitch today. Just something useful.
 
-I put together a communication audit template that I've personally used with over a dozen teams. It takes about 15 minutes and gives you a clear picture of where your team's communication is breaking down.
+I put together a communication audit template that I've personally used with over a dozen teams. It takes about 15 minutes and gives you a clear picture of where your communication is breaking down.
 
 **[Download the Communication Audit Template] -> driftbox.ai/audit-template**
 
 Here's what it covers:
 
 **Section 1: Tool Inventory (3 minutes)**
-List every communication tool your team uses. Email, Slack, Teams, Discord, text messages, WhatsApp groups — all of it. Most people are shocked when they see the full list. I worked with one 8-person startup that was using 11 different communication channels.
+List every communication tool you use. Email, Slack, Teams, Discord, text messages, WhatsApp groups — all of it. Most people are shocked when they see the full list. I worked with one 8-person startup that was using 11 different communication channels.
 
 **Section 2: Information Flow Mapping (5 minutes)**
 For each type of important communication (decisions, action items, client updates, deadlines, project status), write down where it typically happens. You'll start to see patterns — and gaps. The gap is where things get lost.
 
 **Section 3: Friction Point Identification (4 minutes)**
-Answer five diagnostic questions about your team's communication habits. Things like: "When a decision is made in chat, how does someone who wasn't online find out?" and "If a client sends an urgent request, how many people need to be manually notified?"
+Answer five diagnostic questions about your communication habits. Things like: "When a decision is made in chat, how do you find out if you weren't online?" and "If a client sends an urgent request, how many steps does it take for you to find out?"
 
 **Section 4: Cost Estimate (3 minutes)**
-Using the numbers from the audit, estimate how many hours per week your team loses to communication overhead. Multiply by your average hourly cost. This is your "communication tax."
+Using the numbers from the audit, estimate how many hours per week you lose to communication overhead. Multiply by your average hourly cost. This is your "communication tax."
 
-The template is a simple Google Sheets document. Make a copy, fill it in, and you'll have a baseline measurement of your team's communication health.
+The template is a simple Google Sheets document. Make a copy, fill it in, and you'll have a baseline measurement of your communication health.
 
 Why am I giving this away? Two reasons. First, I genuinely believe every team should understand where their communication breaks down, whether they ever use DriftBox or not. Second, when you see the gaps in black and white, you'll understand exactly why we're building what we're building.
 
@@ -164,7 +164,7 @@ P.S. — No email from me for another week. Letting you breathe. But if you want
 - Also offer a PDF version for people who prefer offline
 - UTM link: ?utm_source=nurture&utm_medium=email&utm_campaign=day7-audit
 - Track downloads as a conversion event in GA4
-- This email should have the highest open rate in the sequence — if it doesn't, test subject line variants like "Your team's communication might be leaking money (free audit)"
+- This email should have the highest open rate in the sequence — if it doesn't, test subject line variants like "Your communication workflow might be leaking money (free audit)"
 
 ---
 
@@ -240,7 +240,7 @@ You'll link DriftBox to the communication tools you already use. Slack, Microsof
 Once connected, our AI begins processing your communication streams. But it's not recording everything or building a surveillance log. It's looking for specific patterns: decisions being made, action items being assigned, deadlines being set, questions going unanswered, and important information that's at risk of being lost.
 
 **Step 3: Your Daily Brief.**
-Every morning (or whenever you choose), DriftBox delivers a brief — a concise summary of what matters across all your channels. Think of it like a chief of staff who read everything overnight and is giving you the 3-minute version. Decisions that were made. Things that need your attention. Action items assigned to you or your team. Follow-ups that are overdue.
+Every morning (or whenever you choose), DriftBox delivers a brief — a concise summary of what matters across all your channels. Think of it like a chief of staff who read everything overnight and is giving you the 3-minute version. Decisions that were made. Things that need your attention. Action items assigned to you. Follow-ups that are overdue.
 
 **Step 4: Smart Search.**
 When you need to find something, you search once and DriftBox searches everywhere. "What did the client say about the Q3 timeline?" — instead of opening Slack, then email, then Teams, you ask DriftBox and get the answer with a link to the original message, regardless of which platform it lives on.
@@ -249,7 +249,7 @@ When you need to find something, you search once and DriftBox searches everywher
 This is the feature I'm most excited about. DriftBox detects when something important is "drifting" — a decision that was made but never followed up on, an action item that's going stale, a client question that's been sitting unanswered for too long. You get a gentle nudge before it becomes a problem.
 
 **What it won't do:**
-DriftBox won't replace any of your tools. It won't add another chat window. It won't require your team to change how they communicate. It works in the background, like a safety net for your team's information flow.
+DriftBox won't replace any of your tools. It won't add another chat window. It won't require you to change how you communicate. It works in the background, like a safety net for your information flow across every platform.
 
 **Privacy and security:**
 Your data is encrypted in transit and at rest. We use enterprise-grade infrastructure (built on Supabase and Vercel). DriftBox processes your messages to extract insights but doesn't store raw message content long-term. You control exactly which channels are connected, and you can disconnect at any time.

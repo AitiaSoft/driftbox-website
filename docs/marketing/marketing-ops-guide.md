@@ -137,7 +137,7 @@ Phrase match:
 Headline 1: Stop Losing Important Messages
 Headline 2: AI Finds What Slack, Teams & Email Bury
 Headline 3: Join the DriftBox Waitlist — Free
-Description 1: Your team uses 5+ communication tools. Important info gets lost daily. DriftBox AI searches across all of them so nothing slips through the cracks.
+Description 1: You use 5+ communication tools. Important info gets lost daily. DriftBox AI searches across all of them so nothing slips through the cracks.
 Description 2: 96% of professionals lose critical messages across platforms. DriftBox catches what falls through. Join the waitlist for early access.
 Display URL: driftbox.ai/waitlist
 Final URL: https://driftbox.ai?utm_source=google&utm_medium=cpc&utm_campaign=search-waitlist
@@ -148,8 +148,8 @@ Final URL: https://driftbox.ai?utm_source=google&utm_medium=cpc&utm_campaign=sea
 Headline 1: Search Slack, Teams & Email at Once
 Headline 2: AI Communication Intelligence Platform
 Headline 3: DriftBox — Early Access Waitlist
-Description 1: One search across every communication tool. Daily AI briefs. Drift alerts when important items slip. DriftBox is the layer your team is missing.
-Description 2: Built for teams drowning in Slack, Teams, and email. DriftBox AI ensures no decision, action item, or deadline gets lost. Join the waitlist.
+Description 1: One search across every communication tool you use. Daily AI briefs. Drift alerts when important items slip. DriftBox is the layer you've been missing.
+Description 2: Built for professionals drowning in Slack, Teams, and email. DriftBox AI ensures no decision, action item, or deadline gets lost. Join the waitlist.
 Display URL: driftbox.ai
 Final URL: https://driftbox.ai?utm_source=google&utm_medium=cpc&utm_campaign=search-waitlist
 ```
@@ -160,7 +160,7 @@ Headline 1: $12K/yr Lost to Communication Chaos
 Headline 2: DriftBox AI Fixes That
 Headline 3: From a 35-Year Software Veteran
 Description 1: The average employee wastes 2.5 hours/day searching across communication tools. DriftBox AI sits on top of Slack, Teams, and email to surface what matters.
-Description 2: Built by a founder with 35 years in software. DriftBox is the AI communication intelligence platform teams have been waiting for. Join the waitlist.
+Description 2: Built by a founder with 35 years in software. DriftBox is the AI communication intelligence platform you've been waiting for. Join the waitlist.
 Display URL: driftbox.ai/waitlist
 Final URL: https://driftbox.ai?utm_source=google&utm_medium=cpc&utm_campaign=search-waitlist
 ```
@@ -288,7 +288,7 @@ URL: https://driftbox.ai?utm_source=reddit&utm_medium=cpc&utm_campaign=waitlist
 ```
 Title: After 35 years in software, I'm building the tool I wished existed for every team I've ever been on
 
-Body: Every team I've worked with has the same problem: important information gets lost between Slack, Teams, email, and whatever else the company uses. I'm building DriftBox — an AI communication intelligence layer that sits on top of your existing tools. No new inbox, no habit changes. Just a safety net for your team's information. We're in pre-launch and I'm looking for feedback from people who feel this pain.
+Body: Every team I've worked with has the same problem: important information gets lost between Slack, Teams, email, and whatever else the company uses. I'm building DriftBox — an AI communication intelligence layer that sits on top of your existing tools. No new inbox, no habit changes. Just a safety net for your important conversations. We're in pre-launch and I'm looking for feedback from people who feel this pain.
 
 CTA Button: Join Waitlist
 URL: https://driftbox.ai?utm_source=reddit&utm_medium=cpc&utm_campaign=waitlist

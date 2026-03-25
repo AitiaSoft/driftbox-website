@@ -359,7 +359,7 @@ I've been running a weekly communication audit for my team for 6 months.
 Here's the 4-step framework I use:
 
 Step 1: Channel inventory
--- List every platform where your team communicates. Include the informal ones (WhatsApp groups, text messages). Most teams are shocked when they see the actual count.
+-- List every platform where you communicate at work. Include the informal ones (WhatsApp groups, text messages). Most people are shocked when they see the actual count.
 
 Step 2: Decision trace
 -- Pick 3 important decisions from the past week. Trace each one: where was it discussed? Where was it decided? Where was it documented? If the answer to all three is different, you have a problem.
@@ -446,16 +446,16 @@ AI-powered summaries and action items. Join the waitlist.
 
 **Variant B (Solution-Focused):**
 ```
-Headline: AI Communication Intelligence for Teams
-Description: One dashboard for every conversation. AI summaries, smart alerts,
+Headline: AI Communication Intelligence for You
+Description: One dashboard for every conversation you're part of. AI summaries, smart alerts,
 action item tracking. Stop losing context. Start your free trial.
 ```
 
 **Variant C (Founder-Led):**
 ```
 Headline: 35 Years in Tech Led Me to Build This
-Description: DriftBox brings AI intelligence to your team's conversations.
-Capture what matters across every platform. See how it works.
+Description: DriftBox brings AI intelligence to your conversations across every platform.
+Capture what matters — nothing slips through the cracks. See how it works.
 ```
 
 **Settings:**
@@ -479,19 +479,19 @@ Capture what matters across every platform. See how it works.
 
 **Ad Creative Concept 1: The Question Ad**
 ```
-Headline: "How many apps does your team use to communicate?"
-Body: Most teams use 5-7. And they still lose track of decisions, action items,
+Headline: "How many apps do you use to communicate at work?"
+Body: Most professionals use 5-7. And they still lose track of decisions, action items,
 and context. We're building DriftBox to fix that -- AI-powered communication
-intelligence across every platform. Join the waitlist.
+intelligence across every platform you use. Join the waitlist.
 CTA: Learn More
 Landing page: driftbox.ai (waitlist)
 ```
 
 **Ad Creative Concept 2: The Data Ad**
 ```
-Headline: "Teams lose 4.8 hours per person per week to communication fragmentation"
-Body: We did the math. Scattered conversations across Slack, email, Teams, and
-WhatsApp cost your team more than you think. DriftBox is AI-powered communication
+Headline: "You lose 4.8 hours per week to communication fragmentation"
+Body: We did the math. Your scattered conversations across Slack, email, Teams, and
+WhatsApp cost you more than you think. DriftBox is AI-powered communication
 intelligence that surfaces what matters. See the full breakdown.
 CTA: Read More
 Landing page: driftbox.ai/blog/hidden-cost-communication-fragmentation
@@ -627,7 +627,7 @@ Community engagement is about **being genuinely useful first**. Every interactio
 
 **Format:** Interactive web tool (embedded on driftbox.ai) or downloadable spreadsheet
 
-**Description:** A calculator that helps team leads and managers quantify the hidden cost of communication fragmentation. The user inputs their team size, average hourly cost per employee, number of communication platforms used, estimated time spent searching for context, and frequency of repeated discussions. The calculator outputs an estimated annual cost of communication overhead, including lost productivity, delayed decisions, and duplicated work.
+**Description:** A calculator that helps professionals quantify the hidden cost of communication fragmentation. The user inputs the number of people they collaborate with, average hourly cost per employee, number of communication platforms used, estimated time spent searching for context, and frequency of repeated discussions. The calculator outputs an estimated annual cost of communication overhead, including lost productivity, delayed decisions, and duplicated work.
 
 **Why It Works:** Puts a dollar figure on a problem people feel but can't quantify. Creates urgency and gives the user a concrete number to bring to leadership when advocating for a solution. The output is inherently shareable ("I just calculated that our team wastes $127K/year on communication fragmentation").
 
@@ -651,7 +651,7 @@ Community engagement is about **being genuinely useful first**. Every interactio
 
 **Format:** Downloadable PDF + Notion template
 
-**Description:** A template for creating a weekly communication intelligence report for your team. Sections include: key decisions made this week (with links to where they were made), open action items and owners, unresolved threads that need attention, upcoming deadlines mentioned in conversations, and a communication health score (based on response times, resolution rates, and platform usage balance). Includes a guide for how to compile the report manually and a preview of how DriftBox automates it.
+**Description:** A template for creating a weekly personal communication intelligence report. Sections include: key decisions made this week (with links to where they were made), open action items and owners, unresolved threads that need your attention, upcoming deadlines mentioned in conversations you're part of, and a communication health score (based on response times, resolution rates, and platform usage balance). Includes a guide for how to compile the report manually and a preview of how DriftBox automates it.
 
 **Why It Works:** Shows the user what communication intelligence looks like in practice. Creates desire for automation (compiling this manually takes 30-45 minutes; DriftBox does it in seconds). Establishes the "weekly intelligence report" as a category that DriftBox owns.
 

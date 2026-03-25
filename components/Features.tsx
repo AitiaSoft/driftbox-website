@@ -38,7 +38,7 @@ const features = [
       </svg>
     ),
     title: 'Action Detection',
-    description: 'Your teammate said "I\'ll send the proposal by Friday." DriftBox remembers so you don\'t have to chase. Zero follow-ups fall through.',
+    description: 'Commitments get made in meetings, Slack, and email. DriftBox tracks the ones that involve you — so nothing falls through.',
     accent: {
       iconBg: 'bg-emerald-500/10 dark:bg-emerald-500/15',
       iconText: 'text-emerald-600 dark:text-emerald-400',

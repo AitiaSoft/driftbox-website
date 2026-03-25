@@ -72,7 +72,7 @@ export default function Hero() {
         {/* Subtitle */}
         <ScrollReveal delay={200}>
           <p className="text-lg md:text-xl text-drift-muted max-w-2xl mx-auto mb-12 leading-relaxed">
-            DriftBox captures decisions, deadlines, and follow-ups across email, Slack, Teams, and WhatsApp — so nothing drifts away.
+            DriftBox captures your decisions, deadlines, and follow-ups across email, Slack, Teams, and WhatsApp — so nothing drifts away.
           </p>
         </ScrollReveal>
 
