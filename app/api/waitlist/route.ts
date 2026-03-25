@@ -26,7 +26,7 @@ async function getGraphToken() {
   return tokenData.access_token
 }
 
-async function sendEmailNotification(signupEmail: string, totalCount: string, signupTimestamp: string, tier: string | null) {
+async function sendEmailNotification(signupEmail: string, totalCount: string, signupTimestamp: string, tier: string | null, utmSource: string | null = null) {
   const token = await getGraphToken()
   if (!token) {
     console.error('Could not get Graph API token for email notification')
@@ -190,7 +190,7 @@ export async function POST(request: NextRequest) {
           })
         : Promise.resolve(null),
       // Email notification
-      sendEmailNotification(cleanEmail, totalCount, signupTimestamp, tier)
+      sendEmailNotification(cleanEmail, totalCount, signupTimestamp, tier, utmSource)
     ])
 
     // Log notification results for debugging
